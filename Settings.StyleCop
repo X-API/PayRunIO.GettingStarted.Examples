@@ -1,0 +1,86 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <StringProperty Name="MergeSettingsFiles">NoMerge</StringProperty>
+    <StringProperty Name="Culture">en-GB</StringProperty>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>ae</Value>
+      <Value>auth</Value>
+      <Value>authorise</Value>
+      <Value>authorisation</Value>
+      <Value>authorising</Value>
+      <Value>behaviour</Value>
+      <Value>paye</Value>
+      <Value>payline</Value>
+      <Value>payrun</Value>
+      <Value>composable</Value>
+      <Value>initialise</Value>
+      <Value>niable</Value>
+      <Value>serialisation</Value>
+      <Value>serialise</Value>
+      <Value>serialised</Value>
+	  <Value>payslip</Value>
+	  <Value>payline</Value>
+	  <Value>paylines</Value>
+	  <Value>lel</Value>
+	  <Value>pt</Value>
+	  <Value>st</Value>
+	  <Value>uap</Value>
+	  <Value>uel</Value>
+	  <Value>ust</Value>
+	  <Value>ytd</Value>
+	  <Value>GovTalk</Value>
+	  <Value>Gov</Value>
+    </CollectionProperty>
+  </GlobalSettings>  
+  <Analyzers>
+    <Analyzer AnalyzerId="StyleCop.CSharp.DocumentationRules">
+      <AnalyzerSettings>
+        <StringProperty Name="CompanyName">PayRun.IO</StringProperty>
+        <StringProperty Name="Copyright">PayRun.IO 2017</StringProperty>
+      </AnalyzerSettings>
+    </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.NamingRules">
+      <AnalyzerSettings>
+        <CollectionProperty Name="Hungarian">
+          <Value>is</Value>
+          <Value>ae</Value>
+          <Value>es</Value>
+          <Value>ni</Value>
+          <Value>o</Value>
+          <Value>p3</Value>
+          <Value>p4</Value>
+		  <Value>th</Value>
+		  <Value>uk</Value>
+		  <Value>ytd</Value>
+        </CollectionProperty>
+      </AnalyzerSettings>
+    </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.DocumentationRules">
+      <Rules>
+        <Rule Name="ConstructorSummaryDocumentationMustBeginWithStandardText">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.ReadabilityRules">
+      <Rules>
+        <Rule Name="UseBuiltInTypeAlias">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+  </Analyzers>
+  <Parsers>
+    <Parser ParserId="StyleCop.CSharp.CsParser">
+      <ParserSettings>
+        <BooleanProperty Name="AnalyzeDesignerFiles">False</BooleanProperty>
+      </ParserSettings>
+    </Parser>
+  </Parsers>
+</StyleCopSettings>
