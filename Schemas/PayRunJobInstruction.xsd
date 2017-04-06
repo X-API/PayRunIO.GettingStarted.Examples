@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="Link.xsd" />
+  
+  <xsd:element name="PayRunJobInstruction" type="PayRunJobInstruction" />
+
+  <xsd:complexType name="PayRunJobInstruction">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="HoldingDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="PaymentDate" type="xsd:date" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="StartDate" type="xsd:date" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="EndDate" type="xsd:date" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="PaySchedule" type="Link" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="IsSupplementary" type="xsd:boolean" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Employees">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Employee" type="Link" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

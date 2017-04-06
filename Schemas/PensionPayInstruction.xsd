@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="PayInstruction.xsd" />
+
+  <xsd:element name="PensionPayInstruction" type="PensionPayInstruction" />
+
+  <xsd:complexType name="PensionPayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="PayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Code" type="SystemCode" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="CalculationMode" type="PensionCalculationMode" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxationMethod" type="PensionTaxationMethod" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmployeeContribution" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmployerContribution" type="Money" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

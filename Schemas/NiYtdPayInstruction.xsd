@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="PayInstruction.xsd" />
+  
+  <xsd:element name="NiYtdPayInstruction" type="NiYtdPayInstruction" />
+
+  <xsd:complexType name="NiYtdPayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="PayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Value" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmployerNI" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="NiablePay" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="NiLetter" type="NiLetter" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LEL" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LELtoPT" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PTtoST" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="STtoUAP" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="STtoUEL" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UAPtoUEL" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UELtoUST" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UELtoAUST" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AboveUST" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AboveAUST" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RebateEE" type="Money" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RebateER" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="DirCalculationMethod" type="DirCalculationMethod" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>

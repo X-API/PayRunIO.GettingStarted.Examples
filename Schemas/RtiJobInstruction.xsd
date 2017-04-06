@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="Link.xsd" />
+
+  <xsd:element name="RtiJobInstruction" type="RtiJobInstruction" />
+
+  <xsd:complexType name="RtiJobInstruction">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="HoldingDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="RtiType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="FPS" />
+            <xsd:enumeration value="EPS" />
+            <xsd:enumeration value="NVR" />
+            <xsd:enumeration value="EAS" />
+            <xsd:enumeration value="EYU" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Generate" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Transmit" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TaxYear"  type="TaxYear" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Employer" type="Link" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Timestamp" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="PaySchedule" type="Link" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="PaymentDate" type="xsd:date" />
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="SchemeCeased" type="xsd:date" />
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="LateReason">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="A" />
+            <xsd:enumeration value="B" />
+            <xsd:enumeration value="C" />
+            <xsd:enumeration value="D" />
+            <xsd:enumeration value="F" />
+            <xsd:enumeration value="G" />
+            <xsd:enumeration value="H" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="TaxMonth" type="TaxMonth" />
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="NoPaymentForPeriodFrom" type="xsd:date" />
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="NoPaymentForPeriodTo" type="xsd:date" />
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="PeriodOfInactivityFrom" type="xsd:date" />
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="PeriodOfInactivityTo" type="xsd:date" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FinalSubmissionForYear" type="xsd:boolean" />
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

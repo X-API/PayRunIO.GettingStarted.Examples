@@ -212,7 +212,6 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
                 Transmit = true,
                 TaxYear = 2016,
                 Employer = employerLink,
-                Timestamp = DateTime.Now,
                 PaySchedule = payScheduleLink,
                 PaymentDate = new DateTime(2016, 4, 30)
             };

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="ReportingInstruction.xsd" />
+
+  <xsd:element name="CisSufferedReportingInstruction" type="CisSufferedReportingInstruction" />
+
+  <xsd:complexType name="CisSufferedReportingInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="ReportingInstruction">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>

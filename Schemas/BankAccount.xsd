@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:element name="BankAccount" type="BankAccount" />
+  
+   <xsd:complexType name="BankAccount">
+    <xsd:all>
+      <xsd:element minOccurs="1" maxOccurs="1" name="AccountName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="18"/>
+            <xsd:pattern value="[A-Za-z0-9\-\' ]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="AccountNumber">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="7"/>
+            <xsd:maxLength value="8"/>
+            <xsd:pattern value="[0-9]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="SortCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="6"/>
+            <xsd:maxLength value="8"/>
+            <xsd:pattern value="[0-9\-]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  
+</xsd:schema>

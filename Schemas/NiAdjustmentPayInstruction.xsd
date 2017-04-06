@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="NiPayInstruction.xsd" />
+
+  <xsd:element name="NiAdjustmentPayInstruction" type="NiAdjustmentPayInstruction" />
+
+  <xsd:complexType name="NiAdjustmentPayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="NiPayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Periods">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="(\d+)(,*\d+)*" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>     
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxYear" type="TaxYear" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Reason">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="500" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>
