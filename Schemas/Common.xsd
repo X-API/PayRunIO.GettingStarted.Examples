@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.131" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.139" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   
   <xsd:simpleType name="Revision">
     <xsd:restriction base="xsd:integer">
@@ -206,6 +206,12 @@
     </xsd:restriction>
   </xsd:simpleType>
 
+  <xsd:simpleType name="EarlierTaxYear">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="2016" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  
   <xsd:simpleType name="TaxMonth">
     <xsd:restriction base="xsd:integer">
       <xsd:minInclusive value="1"/>
