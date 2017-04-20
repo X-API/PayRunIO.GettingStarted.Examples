@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.141" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.142" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="AbsenceYtdPayInstruction.xsd" />
 
@@ -9,6 +9,13 @@
     <xsd:complexContent>
       <xsd:extension base="AbsenceYtdPayInstruction">
         <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="KeepInTouchDays">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" name="Date" type="xsd:date" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
