@@ -4,7 +4,7 @@ C# SDK for PayRun.IO with getting started examples.
 <img src="http://build.cmpsoftware.co.uk/app/rest/builds/buildType:(id:PayRunIO_CSharpSdk)/statusIcon"/>
 </a>
 ## Practical Examples
-1. Simple Payrun: a guide to creating and executing your very first payrun.
+1. [Simple Payrun: a guide to creating and executing your very first payrun.](https://github.com/X-API/PayRunIO.CSharp.SDK/blob/master/PayRunIO.CSharp.SDK.GettingStarted/Examples/SimplePayrun.cs)
 2. Changing and employee tax code and basis
 3. Changing an employee's NI letter
 4. Changing an empoyee's salary
