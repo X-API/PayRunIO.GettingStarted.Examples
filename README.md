@@ -12,8 +12,8 @@ C# SDK for PayRun.IO with getting started examples.
 6. Paying an employee varying amounts each period
 7. Adding an employee mid year with YTD information
 8. Adding an employee mid year with P45
-9. Creating and managing statutory maternity absence
-10. Creating and managing Statutory sick pay absence (S
+9. Creating and managing statutory maternity absence (SMP)
+10. Creating and managing Statutory sick pay absence (SSP)
 11. Creating and managing statutory paternity absence (SPP)
 12. Creating and managing statutory adoption absence (SAP)
 13. Creating and managing shared parental pay (ShPP)
