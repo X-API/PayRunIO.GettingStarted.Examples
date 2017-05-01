@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.161" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.164" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   
   <xsd:simpleType name="Revision">
     <xsd:restriction base="xsd:integer">
@@ -195,6 +195,18 @@
       <xsd:enumeration value="Annual260Days" />
       <xsd:enumeration value="Annual365Days" />
       <xsd:enumeration value="AnnualQualifyingDays" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="UomBasicPay">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotSet" />
+      <xsd:enumeration value="Minute" />
+      <xsd:enumeration value="Hour" />
+      <xsd:enumeration value="Day" />
+      <xsd:enumeration value="Week" />
+      <xsd:enumeration value="Month" />
+      <xsd:enumeration value="Year" />
     </xsd:restriction>
   </xsd:simpleType>
 
