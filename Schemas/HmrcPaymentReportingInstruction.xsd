@@ -3,9 +3,9 @@
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="ReportingInstruction.xsd" />
 
-  <xsd:element name="ApprenticeshipLevyReportingInstruction" type="ApprenticeshipLevyReportingInstruction" />
+  <xsd:element name="HmrcPaymentReportingInstruction" type="HmrcPaymentReportingInstruction" />
 
-  <xsd:complexType name="ApprenticeshipLevyReportingInstruction">
+  <xsd:complexType name="HmrcPaymentReportingInstruction">
     <xsd:complexContent>
       <xsd:extension base="ReportingInstruction">
       </xsd:extension>
