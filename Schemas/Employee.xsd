@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.201" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.202" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Address.xsd" />
   <xsd:include schemaLocation="BankAccount.xsd" />
@@ -13,7 +13,7 @@
       <xsd:documentation>
         Represents an employee revision.
         <span class="note">
-          See <a href="/docs/key-concepts/revisible-objects.html">revisible objects</a> for more information.
+          See <a href="/docs/key-concepts/revisible-objects.html">revisible objects</a> for more information on revisions and how they work.
         </span>
       </xsd:documentation>
     </xsd:annotation>
@@ -57,14 +57,14 @@
       <xsd:element minOccurs="0" maxOccurs="1" name="NiNumber" type="NiNumber">
         <xsd:annotation>
           <xsd:documentation>
-            The employee&#39;s National Insurance number issued by HMRC.<span class="note">Temporay NI numbers should no longer be used for payroll</span>
+            The employee&#39;s National Insurance number issued by HMRC. <span class="note">Temporary NI numbers should no longer be used for payroll</span>
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="xsd:date">
         <xsd:annotation>
           <xsd:documentation>
-            The employee&#39;s date of birth.<span class="note">The correct date of birth will ensure the correct NI letter is assigned.</span>
+            The employee&#39;s date of birth. <span class="note">The correct date of birth will ensure the correct NI letter is assigned.</span>
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
