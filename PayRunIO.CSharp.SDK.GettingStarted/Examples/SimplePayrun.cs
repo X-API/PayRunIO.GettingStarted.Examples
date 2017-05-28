@@ -36,7 +36,6 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
             var employer = new Employer
             {
                 EffectiveDate = new DateTime(2016, 1, 1),
-                UniqueRef = "GSC1",
                 Name = "Getting Started Co Ltd",
                 BacsServiceUserNumber = "123456",
                 RuleExclusions = RuleExclusionFlags.None,
@@ -212,7 +211,6 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
                 Transmit = true,
                 TaxYear = 2016,
                 Employer = employerLink,
-                Timestamp = DateTime.Now,
                 PaySchedule = payScheduleLink,
                 PaymentDate = new DateTime(2016, 4, 30)
             };
