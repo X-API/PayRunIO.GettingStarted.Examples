@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="Address.xsd" />
+  <xsd:include schemaLocation="BankAccount.xsd" />
+  <xsd:include schemaLocation="EmployeePartner.xsd" />
+  <xsd:include schemaLocation="Link.xsd" />
+
+  <xsd:element name="Employee" type="Employee" />
+
+  <xsd:complexType name="Employee">
+    <xsd:annotation>
+      <xsd:documentation>
+        Represents an employee revision.
+        <span class="note">
+          See <a href="/docs/key-concepts/revisible-objects.html">revisible objects</a> for more information on revisions and how they work.
+        </span>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date the revision will come into effect.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Revision" type="Revision">
+        <xsd:annotation>
+          <xsd:documentation>The revision number of the employee.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Code" type="UniqueRef" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Title" type="Name">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s formal title.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="FirstName" type="Name">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s first name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="MiddleName" type="Name">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s middle name(s) (if any).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Initials" type="Name">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s initial, if not supplying a first name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="LastName" type="Name">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s lastname or surname.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="NiNumber" type="NiNumber">
+        <xsd:annotation>
+          <xsd:documentation>
+            The employee&#39;s National Insurance number issued by HMRC. <span class="note">Temporary NI numbers should no longer be used for payroll</span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>
+            The employee&#39;s date of birth. <span class="note">The correct date of birth will ensure the correct NI letter is assigned.</span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Directorship" default="Off" type="DirCalculationMethod">
+        <xsd:annotation>
+          <xsd:documentation>
+            The calculation method to be used if the employee is a director.
+            <span class="note">
+              See <a href="/docs/key-concepts/employees-as-directors.html">Employees as Directors</a>
+            </span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Gender">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The employee&#39;s current gender.</xsd:documentation>
+          </xsd:annotation>  
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Male" />
+            <xsd:enumeration value="Female" />
+          </xsd:restriction>   
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="NicLiability">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>
+              The NIC liability flags are used to ensure the correct NI letter is assigned.
+              <span class="note">
+                See <a href="/docs/getting-started/using-the-correct-ni-letter-code.html">Using the correct NI letter code</a> for more information on setting the correct NIC liability flags.
+              </span>
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(?:(?:IsFullyLiable|HasOtherJob|IsFemaleEntitledToReducedRate|IsNotLiable|IsContractedOut|IsApprentice|LeaverBeyond6Weeks)\s?){1,4}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Region" type="CalculatorRegion" default="England">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s region which determines the correct calculators to be used.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Territory" type="CalculatorTerritory" default="UnitedKingdom">
+        <xsd:annotation>
+          <xsd:documentation>
+            The employee&#39;s territory which determines the correct calculators to be used.
+            <span class="note">Currently United Kingdom is the only supported territory.</span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PaySchedule" type="Link">
+        <xsd:annotation>
+          <xsd:documentation>A link to the Pay Schedule resource that the employee is assigned to.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="StartDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The commencement date of the employee&#39;s employment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="StarterDeclaration" nillable="true">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The declaration made by the employee.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="A" />
+            <xsd:enumeration value="B" />
+            <xsd:enumeration value="C" />
+            <xsd:enumeration value="NA" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="LeavingDate" type="xsd:date" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The date the employee leaves the employment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="LeaverReason" nillable="true">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The reason the employee leaves the employment.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Resigned" />
+            <xsd:enumeration value="Dismissed" />
+            <xsd:enumeration value="Redundant" />
+            <xsd:enumeration value="Retired" />
+            <xsd:enumeration value="Deceased" />
+            <xsd:enumeration value="LegalCustody" />
+            <xsd:enumeration value="Other" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="RuleExclusions" type="RuleExclusionFlags" default="None">
+        <xsd:annotation>
+          <xsd:documentation>
+            The list of pre-claculation rules to exclude.
+            <span class="note">
+              See <a href="/docs/key-concepts/pre-calculation-rules.html">Pre-calculation rules</a> for more information on how they work.
+            </span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="WorkingWeek" default="AllWeekDays">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The employee&#39;s normal working week pattern.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(?:(?:None|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|AllWeekDays|AllDays)\s?){1,4}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Address" type="Address">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s home address.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="HoursPerWeek" default="40">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The employee&#39;s normal number of hours worked per week (irrespective of pay frequency).</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:double">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="168"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PassportNumber">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The employee&#39;s passport number.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+            <xsd:pattern value="[0-9]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Seconded" default="NotSet">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Indicates if the employee is on secondment from abroad.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NotSet" />
+            <xsd:enumeration value="Stay183DaysOrMore" />
+            <xsd:enumeration value="StayLessThan183Days" />
+            <xsd:enumeration value="InOutUk" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="IsAgencyWorker" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the employee is an agency worker.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="EEACitizen" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the seconded employee is a citizen of the European Economic Area.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="EPM6" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the seconded employee is under an EPM6 (Modified) Scheme for tax equalised expatriate employees.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PaymentToANonIndividual" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates where payments are made to a body, such as personal representative, trustee or corporate organisation.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="IrregularEmployment" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the employee is paid on an irregular basis.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="OnStrike" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the employee&#39;s pay in this pay period has been reduced due to being on strike.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PaymentMethod" default="NotSet">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The employee&#39;s preferred payment method.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NotSet" />
+            <xsd:enumeration value="Cash" />
+            <xsd:enumeration value="Cheque" />
+            <xsd:enumeration value="BACS" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="BankAccount" type="BankAccount">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s bank account details; used for BACS payments.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="EmployeePartner" type="EmployeePartner">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s partner details; used when paying ShPP</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

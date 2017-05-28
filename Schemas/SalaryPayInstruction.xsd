@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="PayInstruction.xsd" />
+
+  <xsd:element name="SalaryPayInstruction" type="SalaryPayInstruction" />
+
+  <xsd:complexType name="SalaryPayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="PayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="AnnualSalary" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ProRataMethod" type="ProRataMethod" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>

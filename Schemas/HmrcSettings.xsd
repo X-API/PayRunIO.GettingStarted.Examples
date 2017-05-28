@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:include schemaLocation="Common.xsd" />
+
+  <xsd:element name="HmrcSettings" type="HmrcSettings" />
+
+  <xsd:complexType name="HmrcSettings">
+    <xsd:all>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TaxOfficeNumber">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{3}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TaxOfficeReference">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+            <xsd:pattern value="[A-Za-z0-9]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="AccountingOfficeRef">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="13"/>
+            <xsd:pattern value="[0-9]{3}P[A-Z][0-9]{7}[0-9X]"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SAUTR">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="10"/>
+            <xsd:pattern value="[0-9]{10}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="COTAXRef">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="10"/>
+            <xsd:pattern value="[0-9]{10}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Sender">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Individual" />
+            <xsd:enumeration value="Company" />
+            <xsd:enumeration value="Agent" />
+            <xsd:enumeration value="Bureau" />
+            <xsd:enumeration value="Partnership" />
+            <xsd:enumeration value="Trust" />
+            <xsd:enumeration value="Employer" />
+            <xsd:enumeration value="Government" />
+            <xsd:enumeration value="ActingInCapacity" />
+            <xsd:enumeration value="Other" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SenderId">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+            <xsd:pattern value="[A-Za-z0-9 ~!&quot;@#$%&amp;&apos;\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]^_\{\}£€]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Password">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+            <xsd:pattern value="[A-Za-z0-9 ~!&quot;@#$%&amp;&apos;\(\)\*\+,\-\./:;&lt;=&gt;\?\[\\\]^_\{\}£€]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ContactFirstName" type="Name" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ContactLastName" type="Name" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ContactEmail">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="3"/>
+            <xsd:maxLength value="129"/>
+            <xsd:pattern value="[A-Za-z0-9\.\-_]{1,64}@[A-Za-z0-9\.\-_]{1,64}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ContactTelephone" type="Telephone" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ContactFax" type="Telephone" />
+    </xsd:all>
+  </xsd:complexType>
+  
+</xsd:schema>

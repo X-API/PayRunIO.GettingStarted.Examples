@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="PayInstruction.xsd" />
+
+  <xsd:element name="P45PayInstruction" type="P45PayInstruction" />
+
+  <xsd:complexType name="P45PayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="PayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxablePay" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxPaid" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxCode" type="TaxCode" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxBasis" type="TaxBasis" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="StudentLoan" type="StudentLoanCalculationMethod" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="PayFrequency" type="PayFrequency" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="LeavingDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PreviousEmployerPayeRef" type="PayeReference" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>

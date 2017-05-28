@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+  <xsd:simpleType name="Revision">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="UniqueRef">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="2"/>
+      <xsd:maxLength value="35"/>
+      <xsd:pattern value="[A-Za-z0-9\-\/]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Postcode">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="5"/>
+      <xsd:maxLength value="8"/>
+      <xsd:pattern value="[A-Z0-9 ]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CalculatorRegion">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotSet" />
+      <xsd:enumeration value="England" />
+      <xsd:enumeration value="Scotland" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CalculatorTerritory">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="UnitedKingdom" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="NiNumber">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="9"/>
+      <xsd:pattern value="([ACEHJLMOPRSWXY][A-CEGHJ-NPR-TW-Z]|B[A-CEHJ-NPR-TW-Z]|G[ACEGHJ-NPR-TW-Z]|[KT][A-CEGHJ-MPR-TW-Z]|N[A-CEGHJL-NPR-SW-Z]|Z[A-CEGHJ-NPR-TW-Y])[0-9]{6}[A-D ]"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Name">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="35"/>
+      <xsd:pattern value="[A-Za-z \-\.\']*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+    
+  <xsd:simpleType name="Telephone">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="6"/>
+      <xsd:maxLength value="35"/>
+      <xsd:pattern value="[0-9\(\)\-\s]{1,35}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Money">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:fractionDigits value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SystemCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="3"/>
+      <xsd:maxLength value="35"/>
+      <xsd:pattern value="[A-Za-z0-9]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="RuleExclusionFlags">
+    <xsd:list>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="NiMissingPayInstructionRule" />
+          <xsd:enumeration value="TaxMissingPayInstructionRule" />
+          <xsd:enumeration value="TaxCodeUpliftRule" />
+          <xsd:enumeration value="NiSetExpectedLetterRule" />
+          <xsd:enumeration value="NiDateOfBirthChangeRetrospectiveCRule" />
+          <xsd:enumeration value="NiDefermentStatusChangeRule" />
+          <xsd:enumeration value="NiEndContractedOutTransferRule" />
+          <xsd:enumeration value="PaymentAfterLeavingRule" />
+          <xsd:enumeration value="LeaverEndInstructionsRule" />
+          <xsd:enumeration value="P45StudentLoanInstructionRule" />
+          <xsd:enumeration value="P45TaxInstructionRule" />
+          <xsd:enumeration value="P45YtdTaxRule" />
+          <xsd:enumeration value="YtdInstructionRule" />
+          <xsd:enumeration value="NiDirectorshipStatusChangeRule" />
+          <xsd:enumeration value="TaxCodeRegionChangeRule" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:list>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="DirCalculationMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Off">
+        <xsd:annotation>
+          <xsd:documentation>Off</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AnnualBasis">
+        <xsd:annotation>
+          <xsd:documentation>Annual Basis</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AlternativeBasis">
+        <xsd:annotation>
+          <xsd:documentation>Alternative Basis</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="PayFrequency">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Weekly" />
+      <xsd:enumeration value="Monthly" />
+      <xsd:enumeration value="TwoWeekly" />
+      <xsd:enumeration value="FourWeekly" />
+      <xsd:enumeration value="Yearly" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="TaxBasis">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Cumulative" />
+      <xsd:enumeration value="Week1Month1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="TaxCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="2"/>
+      <xsd:maxLength value="7"/>
+      <xsd:pattern value="^(SD1|D1|BR|SBR|SD0|D0|NT)$|^[S]?((K{1}[0-9]{1,6})|([0-9]{1,6}[LMNPTYV]{1})$)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="BenefitAccountingMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="P11D" />
+      <xsd:enumeration value="PAYE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="StudentLoanCalculationMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Off" />
+      <xsd:enumeration value="Plan1" />
+      <xsd:enumeration value="Plan2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="PayeReference">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="14"/>
+      <xsd:pattern value="([0-9]{3})/([A-Za-z0-9]{1,10})"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="NiLetter">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="A|B|C|D|E|I|J|K|L|M|X|Z"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="PensionCalculationMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotSet" />
+      <xsd:enumeration value="Cash" />
+      <xsd:enumeration value="Percentage" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="PensionTaxationMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotSet" />
+      <xsd:enumeration value="NetBased" />
+      <xsd:enumeration value="ReliefAtSourceIncluded" />
+      <xsd:enumeration value="ReliefAtSourceExcluded" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ProRataMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotSet" />
+      <xsd:enumeration value="Annual260Days" />
+      <xsd:enumeration value="Annual365Days" />
+      <xsd:enumeration value="AnnualQualifyingDays" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="UomBasicPay">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotSet" />
+      <xsd:enumeration value="Minute" />
+      <xsd:enumeration value="Hour" />
+      <xsd:enumeration value="Day" />
+      <xsd:enumeration value="Week" />
+      <xsd:enumeration value="Month" />
+      <xsd:enumeration value="Year" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="TaxYear">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="2015" />
+      <xsd:enumeration value="2016" />
+      <xsd:enumeration value="2017" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="EarlierTaxYear">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="2016" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="TaxMonth">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="12"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+</xsd:schema>

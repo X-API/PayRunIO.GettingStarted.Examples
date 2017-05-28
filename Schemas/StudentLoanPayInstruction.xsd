@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="PayInstruction.xsd" />
+
+  <xsd:element name="StudentLoanPayInstruction" type="StudentLoanPayInstruction" />
+
+  <xsd:complexType name="StudentLoanPayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="PayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="StudentLoanCalculationMethod" type="StudentLoanCalculationMethod" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="PayInstruction.xsd" />
+  
+  <xsd:complexType name="AbsencePayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="PayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="AbsenceStart" type="xsd:date"/>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="AbsenceEnd" type="xsd:date"/>
+          <xsd:element minOccurs="1" maxOccurs="1" name="StatutoryOffset" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

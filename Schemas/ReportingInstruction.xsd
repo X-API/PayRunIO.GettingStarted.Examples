@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  
+  <xsd:complexType name="ReportingInstructionBase">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="StartDate" type="xsd:date"/>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EndDate" type="xsd:date"/>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TaxYear" type="TaxYear" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ReportingInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="ReportingInstructionBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="TaxMonth" type="TaxMonth" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Value" type="Money" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="AbsencePayInstruction.xsd" />
+
+  <xsd:element name="ShppPayInstruction" type="ShppPayInstruction" />
+
+  <xsd:complexType name="ShppPayInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="AbsencePayInstruction">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="AverageWeeklyEarningOverride" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="BabyDueDate" type="xsd:date" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="BabyBornDate" type="xsd:date" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SmpSapWeeksTaken" type="xsd:integer" />
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="SplStartDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="SplEndDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="MothersDateOfDeath" type="xsd:date" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>

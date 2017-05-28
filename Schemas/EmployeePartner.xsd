@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  
+  <xsd:element name="EmployeePartner" type="EmployeePartner" />
+
+  <xsd:complexType name="EmployeePartner">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Title" type="Name" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FirstName" type="Name" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="MiddleName" type="Name" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Initials" type="Name" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LastName" type="Name" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="NiNumber" type="NiNumber" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+</xsd:schema>

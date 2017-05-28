@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="ReportingInstruction.xsd" />
+
+  <xsd:element name="OpeningBalanceReportingInstruction" type="OpeningBalanceReportingInstruction" />
+
+  <xsd:complexType name="OpeningBalanceReportingInstruction">
+    <xsd:complexContent>
+      <xsd:extension base="ReportingInstructionBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmploymentAllowanceClaimed" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Tax" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="StudentLoan" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmployerNI" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmployeeNI" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SmpRecovered" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SmpComp" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SppRecovered" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SppComp" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ShppRecovered" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ShppComp" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SapRecovered" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="SapComp" type="Money" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="AmountPaid" type="Money" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+</xsd:schema>
