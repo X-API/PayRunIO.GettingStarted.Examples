@@ -1,16 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.237" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="PayInstruction.xsd" />
 
   <xsd:element name="SalaryPayInstruction" type="SalaryPayInstruction" />
 
   <xsd:complexType name="SalaryPayInstruction">
+    
+    <xsd:annotation>
+      <xsd:documentation>
+        The salary pay instruction is used to configure an employee&#39;s annual salary.
+        <span class="note">
+          See <a href="/docs/getting-started/setting-the-employee-salary.html">Setting the Employee Salary</a> for more information.
+        </span>
+      </xsd:documentation>
+    </xsd:annotation> 
+    
     <xsd:complexContent>
       <xsd:extension base="PayInstruction">
         <xsd:sequence>
-          <xsd:element minOccurs="1" maxOccurs="1" name="AnnualSalary" type="Money" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="ProRataMethod" type="ProRataMethod" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="AnnualSalary" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>The employee&#39;s gross annual salary.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="ProRataMethod" type="ProRataMethod">
+            <xsd:annotation>
+                <xsd:documentation>
+                  The pro-rata method option to be used; the default is not set.
+                  <span class="note">
+                    See <a href="/docs/payroll-help/prorata-calculation-methods.html">Pro-rata Calculation Methods</a> for more information.
+                  </span>
+                </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

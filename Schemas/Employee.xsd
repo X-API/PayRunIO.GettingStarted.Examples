@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.237" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Address.xsd" />
   <xsd:include schemaLocation="BankAccount.xsd" />
@@ -28,7 +28,20 @@
           <xsd:documentation>The revision number of the employee.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element minOccurs="1" maxOccurs="1" name="Code" type="UniqueRef" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Code">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The employee&#39;s unique code also known as the payroll Id
+            <span class="note">The code must be unique to Employer and never reused.</span>
+          </xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="2"/>
+            <xsd:maxLength value="35"/>
+            <xsd:pattern value="[A-Za-z0-9\-\/]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
       <xsd:element minOccurs="0" maxOccurs="1" name="Title" type="Name">
         <xsd:annotation>
           <xsd:documentation>The employee&#39;s formal title.</xsd:documentation>

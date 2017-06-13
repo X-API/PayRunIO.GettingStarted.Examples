@@ -1,21 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.204" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  
+<xsd:schema version="0.1.0.237" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:annotation>
+    <xsd:documentation>
+      The common types are...
+    </xsd:documentation>
+  </xsd:annotation>
+
   <xsd:simpleType name="Revision">
+    <xsd:annotation>
+      <xsd:documentation>.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:integer">
       <xsd:minInclusive value="0"/>
     </xsd:restriction>
   </xsd:simpleType>
-
-  <xsd:simpleType name="UniqueRef">
-    <xsd:restriction base="xsd:string">
-      <xsd:minLength value="2"/>
-      <xsd:maxLength value="35"/>
-      <xsd:pattern value="[A-Za-z0-9\-\/]*"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-
+  
   <xsd:simpleType name="Postcode">
+    <xsd:annotation>
+      <xsd:documentation>The UK postcode string.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="5"/>
       <xsd:maxLength value="8"/>
@@ -24,6 +28,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="CalculatorRegion">
+    <xsd:annotation>
+      <xsd:documentation>The calculator region (in combination with the calculator territory) determines the calculators to be used.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="NotSet" />
       <xsd:enumeration value="England" />
@@ -32,12 +39,23 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="CalculatorTerritory">
+    <xsd:annotation>
+      <xsd:documentation>
+        <xsd:documentation>The calculator territory (in combination with the calculator region) determines the calculators to be used.</xsd:documentation>
+        <span class="note">Currently United Kingdom is the only supported calculator territory.</span>
+    </xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="UnitedKingdom" />
     </xsd:restriction>
   </xsd:simpleType>
 
   <xsd:simpleType name="NiNumber">
+    <xsd:annotation>
+      <xsd:documentation>The employee&#39;s National Insurance number issued by HMRC.
+      <span class="note">Temporary NI numbers should no longer be used for payroll.</span>
+    </xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:length value="9"/>
       <xsd:pattern value="([ACEHJLMOPRSWXY][A-CEGHJ-NPR-TW-Z]|B[A-CEHJ-NPR-TW-Z]|G[ACEGHJ-NPR-TW-Z]|[KT][A-CEGHJ-MPR-TW-Z]|N[A-CEGHJL-NPR-SW-Z]|Z[A-CEGHJ-NPR-TW-Y])[0-9]{6}[A-D ]"/>
@@ -45,6 +63,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="Name">
+    <xsd:annotation>
+      <xsd:documentation>Used for a person's name (first, middle or last).</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="1"/>
       <xsd:maxLength value="35"/>
@@ -53,6 +74,9 @@
   </xsd:simpleType>
     
   <xsd:simpleType name="Telephone">
+    <xsd:annotation>
+      <xsd:documentation>A UK based telephone number.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="6"/>
       <xsd:maxLength value="35"/>
@@ -61,12 +85,18 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="Money">
+    <xsd:annotation>
+      <xsd:documentation>A decimal figure rounded to 2 decimal places to represent a currency. Negative values are permitted.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:decimal">
       <xsd:fractionDigits value="2"/>
     </xsd:restriction>
   </xsd:simpleType>
 
   <xsd:simpleType name="SystemCode">
+    <xsd:annotation>
+      <xsd:documentation>An alpha-numeric system code.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="3"/>
       <xsd:maxLength value="35"/>
@@ -77,6 +107,9 @@
   <xsd:simpleType name="RuleExclusionFlags">
     <xsd:list>
       <xsd:simpleType>
+        <xsd:annotation>
+          <xsd:documentation>A list of pre-claculation rules that can excluded by name.</xsd:documentation>
+        </xsd:annotation>
         <xsd:restriction base="xsd:string">
           <xsd:enumeration value="None" />
           <xsd:enumeration value="NiMissingPayInstructionRule" />
@@ -100,6 +133,13 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="DirCalculationMethod">
+    <xsd:annotation>
+      <xsd:documentation>The calculation method to use when calcualting an employee as a director.
+      <span class="note">
+        See <a href="/docs/key-concepts/employees-as-directors.html">Employees as Directors</a>
+      </span>
+      </xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Off">
         <xsd:annotation>
@@ -120,6 +160,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="PayFrequency">
+    <xsd:annotation>
+      <xsd:documentation>The available pay frequencies.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Weekly" />
       <xsd:enumeration value="Monthly" />
@@ -130,6 +173,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="TaxBasis">
+    <xsd:annotation>
+      <xsd:documentation>The tax calculation basis.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Cumulative" />
       <xsd:enumeration value="Week1Month1" />
@@ -137,6 +183,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="TaxCode">
+    <xsd:annotation>
+      <xsd:documentation>The tax code format issued by HMRC.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="2"/>
       <xsd:maxLength value="7"/>
@@ -145,6 +194,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="BenefitAccountingMethod">
+    <xsd:annotation>
+      <xsd:documentation>The accounting method used for calcualting and reporting employee benefits.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="P11D" />
       <xsd:enumeration value="PAYE" />
@@ -152,6 +204,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="StudentLoanCalculationMethod">
+    <xsd:annotation>
+      <xsd:documentation>The student loan claculation method.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Off" />
       <xsd:enumeration value="Plan1" />
@@ -160,6 +215,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="PayeReference">
+    <xsd:annotation>
+      <xsd:documentation>The unique reference issued to the employer by HMRC.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:maxLength value="14"/>
       <xsd:pattern value="([0-9]{3})/([A-Za-z0-9]{1,10})"/>
@@ -167,12 +225,18 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="NiLetter">
+    <xsd:annotation>
+      <xsd:documentation>The National Insurance table code.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:pattern value="A|B|C|D|E|I|J|K|L|M|X|Z"/>
     </xsd:restriction>
   </xsd:simpleType>
 
   <xsd:simpleType name="PensionCalculationMode">
+    <xsd:annotation>
+      <xsd:documentation>The method used to calculate pension contributions.</xsd:documentation>
+    </xsd:annotation>  
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="NotSet" />
       <xsd:enumeration value="Cash" />
@@ -181,6 +245,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="PensionTaxationMethod">
+    <xsd:annotation>
+      <xsd:documentation>The method used to calculate taxation on pension contributions.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="NotSet" />
       <xsd:enumeration value="NetBased" />
@@ -190,6 +257,13 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="ProRataMethod">
+    <xsd:annotation>
+      <xsd:documentation>The pro-rata method options.
+      <span class="note">
+        See <a href="/docs/payroll-help/prorata-calculation-methods.html">Pro-rata Calculation Methods</a> for more information.
+    </span>
+      </xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="NotSet" />
       <xsd:enumeration value="Annual260Days" />
@@ -199,6 +273,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="UomBasicPay">
+    <xsd:annotation>
+      <xsd:documentation>The unit of measure for basic pay payments.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="NotSet" />
       <xsd:enumeration value="Minute" />
@@ -211,6 +288,9 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="TaxYear">
+    <xsd:annotation>
+      <xsd:documentation>The list of available tax years.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:integer">
       <xsd:enumeration value="2015" />
       <xsd:enumeration value="2016" />
@@ -219,12 +299,18 @@
   </xsd:simpleType>
 
   <xsd:simpleType name="EarlierTaxYear">
+    <xsd:annotation>
+      <xsd:documentation>The list of available earlier tax years; used when creating an EYU instruction.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:integer">
       <xsd:enumeration value="2016" />
     </xsd:restriction>
   </xsd:simpleType>
   
   <xsd:simpleType name="TaxMonth">
+    <xsd:annotation>
+      <xsd:documentation>The list of available tax months; used for reporting only.</xsd:documentation>
+    </xsd:annotation>
     <xsd:restriction base="xsd:integer">
       <xsd:minInclusive value="1"/>
       <xsd:maxInclusive value="12"/>
