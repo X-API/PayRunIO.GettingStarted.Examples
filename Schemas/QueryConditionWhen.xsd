@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="QueryConditionBase.xsd" />
+  
+  <xsd:complexType name="When">
+    <xsd:annotation>
+      <xsd:documentation>The when condition. Used for conditional inclusion of entity groups.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="QueryConditionBase">
+        <xsd:attribute name="ValueA" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The first comparison value. Accepts variable names.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="ValueB" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The second comparison value. Accepts variable names.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="CaseSensitive" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>The case sensitivity flag value. Determines if comparisons should be case sensitive. If omitted; comparisons are non-case sensitive.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:boolean">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="QueryOutputBase.xsd" />
+  <xsd:include schemaLocation="QueryFilterBase.xsd" />
+
+  <xsd:complexType name="QueryOutputAggregateBase" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>
+        <span>The aggregate output base type. Defines the common schema elements of the aggregation outputs.</span>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="QueryOutputBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Filter" type="QueryFilterBase">
+            <xsd:annotation>
+              <xsd:documentation>The filter rules. Allows for the specification of entity filter expressions.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="Name" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The output name. Used to identify the output target. Variable names are allowed.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="Negate" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>The negate option. Indicates that the aggregation result should be negated.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:boolean">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="QueryOrderByBase" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>The order by base type. Used to specify the output order for matched entities.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="Property" use="required">
+      <xsd:annotation>
+        <xsd:documentation>The property name. Indicates the entity property to be used for ordering.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[A-Za-z0-9_]+"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+
+</xsd:schema>

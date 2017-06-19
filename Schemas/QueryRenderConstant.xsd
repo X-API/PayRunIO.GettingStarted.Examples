@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="QueryOutputBase.xsd" />
+  
+  <xsd:complexType name="RenderConstant">
+    <xsd:annotation>
+      <xsd:documentation>
+        <span>The render output constant type. Used to select constant values from within the API.</span>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="QueryOutputBase">
+        <xsd:attribute name="Name" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The output name. Provides the name of the outputted value. Variable names are allowed.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="ConstantName" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The name of the API constant value. Provides the name of the constant value to be rendered.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="ConstantType" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The data type name of constant value. Provides the name of the constant value data type to be rendered.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="System.Decimal" />
+              <xsd:enumeration value="System.Integer" />
+              <xsd:enumeration value="System.String" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

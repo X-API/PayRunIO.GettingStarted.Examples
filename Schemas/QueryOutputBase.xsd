@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="QueryOutputBase" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>The output base type. Used to specify the elements outputted to the report.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="Output" use="optional">
+      <xsd:annotation>
+        <xsd:documentation>The target location for the output. Allows the output to be directed towards: element, attribute or variable. If omitted; defaults to element.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Element">
+            <xsd:annotation>
+              <xsd:documentation>Target the report element.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Attribute">
+            <xsd:annotation>
+              <xsd:documentation>Target the report element attribute.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Variable">
+            <xsd:annotation>
+              <xsd:documentation>Target and replace the report variable.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="VariableSum">
+            <xsd:annotation>
+              <xsd:documentation>Target and sum the report variable. Numeric variable types only.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="VariableAppend">
+            <xsd:annotation>
+              <xsd:documentation>Target and concatenate the report variable. String variable types only.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+
+</xsd:schema>

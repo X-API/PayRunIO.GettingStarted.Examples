@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="QueryOutputAggregateBase.xsd" />
+  
+  <xsd:complexType name="ExpressionCalculator">
+    <xsd:annotation>
+      <xsd:documentation>
+        <span>The aggregate output average type. Used to output the average value of the specified property.</span>
+        <ul>
+          <li>
+            <b>Supported data types:</b>
+          </li>
+          <li>Integer</li>
+          <li>Decimal</li>
+        </ul>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="QueryOutputAggregateBase">
+        <xsd:attribute name="Expression" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The aggregation expression. A simple expression following this pattern: 1 + 2 - 3 / 4 * 10.9. Variable names are allowed.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:pattern value="[\[\]\.\-\/a-zA-Z0-9+*$ ]+"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="Format" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>The output formatting. Used to apply string formatting to the aggregated result.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="Min" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>The minimum result value. Used to ensure the returned value is not less than the specified minimum. Variable Names are allowed.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="Max" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>The minimum result value. Used to ensure the returned value is not less than the specified minimum. Variable Names are allowed.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

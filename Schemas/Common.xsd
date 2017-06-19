@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.246" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:annotation>
     <xsd:documentation>
@@ -108,7 +108,7 @@
     <xsd:list>
       <xsd:simpleType>
         <xsd:annotation>
-          <xsd:documentation>A list of pre-claculation rules that can excluded by name.</xsd:documentation>
+          <xsd:documentation>A list of pre-calculation rules that can excluded by name.</xsd:documentation>
         </xsd:annotation>
         <xsd:restriction base="xsd:string">
           <xsd:enumeration value="None" />
@@ -134,7 +134,7 @@
 
   <xsd:simpleType name="DirCalculationMethod">
     <xsd:annotation>
-      <xsd:documentation>The calculation method to use when calcualting an employee as a director.
+      <xsd:documentation>The calculation method to use when calculation an employee as a director.
       <span class="note">
         See <a href="/docs/key-concepts/employees-as-directors.html">Employees as Directors</a>
       </span>
@@ -195,7 +195,7 @@
 
   <xsd:simpleType name="BenefitAccountingMethod">
     <xsd:annotation>
-      <xsd:documentation>The accounting method used for calcualting and reporting employee benefits.</xsd:documentation>
+      <xsd:documentation>The accounting method used for calculation and reporting employee benefits.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="P11D" />
@@ -205,7 +205,7 @@
 
   <xsd:simpleType name="StudentLoanCalculationMethod">
     <xsd:annotation>
-      <xsd:documentation>The student loan claculation method.</xsd:documentation>
+      <xsd:documentation>The student loan calculation method.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Off" />

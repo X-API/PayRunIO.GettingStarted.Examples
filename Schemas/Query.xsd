@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="QueryEntityGroup.xsd" />
+  <xsd:include schemaLocation="QueryNameValuePair.xsd" />
+
+  <xsd:element name="Query" type="Query" />
+
+  <xsd:complexType name="Query">
+    <xsd:annotation>
+      <xsd:documentation>The data transfer object query. Written using the reporting query language definition. Represents the serialised reporting query used during report processing.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="1" maxOccurs="1" name="RootNodeName">
+        <xsd:annotation>
+          <xsd:documentation>The report root node name. Used for naming the root element of the report output.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="3"/>
+            <xsd:maxLength value="50"/>
+            <xsd:pattern value="[A-Za-z0-9]*"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Variables">
+        <xsd:annotation>
+          <xsd:documentation>The report variables. Contains the pre-defined key value pair variables.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Variable" type="NameValuePair" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Required">
+        <xsd:annotation>
+          <xsd:documentation>The required variable collection. Lists the variable names that must be present at the start of the report generation process.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Variable" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Groups">
+        <xsd:annotation>
+          <xsd:documentation>The entity reporting groups. Lists the the entity reporting groups to be used during the report generation process.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Group" type="EntityGroup" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

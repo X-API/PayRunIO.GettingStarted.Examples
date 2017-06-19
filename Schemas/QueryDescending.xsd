@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="QueryOrderByBase.xsd" />
+  
+  <xsd:complexType name="Descending">
+    <xsd:annotation>
+      <xsd:documentation>
+        <span>The descending order by option. Used to sort matched entities by their specified property values.</span>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="QueryOrderByBase">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

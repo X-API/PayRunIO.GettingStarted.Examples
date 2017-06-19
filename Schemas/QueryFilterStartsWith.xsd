@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="QueryFilterBase.xsd" />
+  
+  <xsd:complexType name="StartsWith">
+    <xsd:annotation>
+      <xsd:documentation>
+        <span>The starts with filter. Matches entities having the property starting with the specified value.</span>
+        <ul>
+          <li>
+            <b>Supported property data types:</b>
+          </li>
+          <li>String</li>
+        </ul>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="QueryFilterBase">
+        <xsd:attribute name="Property" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The property name. Indicates the entity property to be used in the filter expression.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:pattern value="[A-Za-z0-9_]+"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="Value" use="required">
+          <xsd:annotation>
+            <xsd:documentation>The filter value. The value to be used in the filter. Variable names are allowed.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>
