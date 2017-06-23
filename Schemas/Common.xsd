@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.247" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.249" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:annotation>
     <xsd:documentation>
@@ -93,6 +93,26 @@
     </xsd:restriction>
   </xsd:simpleType>
 
+  <xsd:simpleType name="DayOfMonth">
+    <xsd:annotation>
+      <xsd:documentation>An integer value between 1 and 31. Represents a calendar day of the month.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="31"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="Percentage">
+    <xsd:annotation>
+      <xsd:documentation>A decimal fraction between 0 and 1. Represents a percentage as a fraction of the number 1.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal">
+      <xsd:minInclusive value="0"/>
+      <xsd:maxInclusive value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
   <xsd:simpleType name="SystemCode">
     <xsd:annotation>
       <xsd:documentation>An alpha-numeric system code.</xsd:documentation>
@@ -101,6 +121,13 @@
       <xsd:minLength value="3"/>
       <xsd:maxLength value="35"/>
       <xsd:pattern value="[A-Za-z0-9]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SystemCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Payment" />
+      <xsd:enumeration value="Deduction" />
     </xsd:restriction>
   </xsd:simpleType>
 
@@ -134,7 +161,7 @@
 
   <xsd:simpleType name="DirCalculationMethod">
     <xsd:annotation>
-      <xsd:documentation>The calculation method to use when calculation an employee as a director.
+      <xsd:documentation>The calculation method to use when calculating an employee as a director.
       <span class="note">
         See <a href="/docs/key-concepts/employees-as-directors.html">Employees as Directors</a>
       </span>
@@ -195,7 +222,7 @@
 
   <xsd:simpleType name="BenefitAccountingMethod">
     <xsd:annotation>
-      <xsd:documentation>The accounting method used for calculation and reporting employee benefits.</xsd:documentation>
+      <xsd:documentation>The accounting method used for calculating and reporting employee benefits.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="P11D" />
@@ -233,17 +260,9 @@
     </xsd:restriction>
   </xsd:simpleType>
 
-  <xsd:simpleType name="PensionCalculationMode">
     <xsd:annotation>
       <xsd:documentation>The method used to calculate pension contributions.</xsd:documentation>
     </xsd:annotation>  
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="NotSet" />
-      <xsd:enumeration value="Cash" />
-      <xsd:enumeration value="Percentage" />
-    </xsd:restriction>
-  </xsd:simpleType>
-
   <xsd:simpleType name="PensionTaxationMethod">
     <xsd:annotation>
       <xsd:documentation>The method used to calculate taxation on pension contributions.</xsd:documentation>

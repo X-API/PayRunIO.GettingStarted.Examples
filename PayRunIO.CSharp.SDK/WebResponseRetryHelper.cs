@@ -9,6 +9,7 @@
 
 namespace PayRunIO.CSharp.SDK
 {
+    using System;
     using System.IO;
     using System.Net;
     using System.Threading;
@@ -40,9 +41,14 @@ namespace PayRunIO.CSharp.SDK
                 {
                     var exceptionResponse = webEx.Response as HttpWebResponse;
 
-                    if (!RequestWasActivelyRefused(exceptionResponse) || ++retryCount >= maxReties)
+                    if (!RequestWasActivelyRefused(exceptionResponse))
                     {
                         throw;
+                    }
+
+                    if (++retryCount >= maxReties)
+                    {
+                        throw new WebException($"Get web response from end point '{request.RequestUri.AbsolutePath}' failed. The target machine actively refused the connection {retryCount} time(s)", webEx, webEx.Status, webEx.Response);
                     }
 
                     Thread.Sleep(100);
