@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.253" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.266" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Link.xsd" />
   <xsd:include schemaLocation="PayInstruction.xsd" />
@@ -10,10 +10,56 @@
     <xsd:complexContent>
       <xsd:extension base="PayInstruction">
         <xsd:sequence>
-          <xsd:element minOccurs="1" maxOccurs="1" name="EmployeeContribution" type="Money" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="EmployerContribution" type="Money" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="PensionablePay" type="Money" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="Pension" type="Link" />
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionCash" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee cash value contribution amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionCash" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employer cash value contribution amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionPercent" type="Percentage">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee contribution percentage.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionPercent" type="Percentage">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employer contribution percentage.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeAdditionalVoluntaryCash" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee additional voluntary cash contribution amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeAdditionalVoluntaryPercent" type="Percentage">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee additional voluntary contribution percentage.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="PensionablePay" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>The total amount of pensionable pay.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Value" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>The employee contribution amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="EmployerContribution" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>The employer contribution amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Pension" type="Link">
+            <xsd:annotation>
+              <xsd:documentation>The related pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

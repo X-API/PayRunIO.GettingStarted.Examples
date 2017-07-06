@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.253" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.266" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Link.xsd" />
   <xsd:include schemaLocation="PayInstruction.xsd" />
@@ -10,18 +10,66 @@
     <xsd:complexContent>
       <xsd:extension base="PayInstruction">
         <xsd:sequence>
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="Code" type="SystemCode" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionCash" type="Money" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionCash" type="Money" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionPercent" type="Percentage" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionPercent" type="Percentage" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="AdditionalVoluntaryContributionCash" type="Money" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="AdditionalVoluntaryContributionPercent" type="Percentage" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="LowerThreshold" type="Money" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="UpperThreshold" type="Money" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="SalarySacrifice" type="xsd:boolean" />
-          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="TaxationMethod" type="PensionTaxationMethod" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="Pension" type="Link" />
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="Code" type="SystemCode">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The payment code override. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionCash" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee cash contribution amount override. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionCash" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employer cash contribution amount override. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionPercent" type="Percentage">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee contribution percentage override. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionPercent" type="Percentage">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employer contribution percentage override. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="AdditionalVoluntaryContributionCash" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee additional voluntary cash contribution amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="AdditionalVoluntaryContributionPercent" type="Percentage">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The employee additional voluntary contribution percentage amount.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="LowerThreshold" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The lower contribution cut off threshold. If specified; contributions will only be calculated on pensionable pay exceeding the thresh hold. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="UpperThreshold" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The upper contribution cut off threshold. If specified; contributions will only be calculated on pensionable pay below the thresh hold. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="SalarySacrifice" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Determines if the contributions are calculated using the salary sacrifice method.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="TaxationMethod" type="PensionTaxationMethod">
+            <xsd:annotation>
+              <xsd:documentation>[Optional] The pension calculation taxation method override. If omitted; use value defined in pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Pension" type="Link">
+            <xsd:annotation>
+              <xsd:documentation>A link to the related pension scheme.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

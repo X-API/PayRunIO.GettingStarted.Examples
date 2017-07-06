@@ -76,8 +76,8 @@
 
         private static void BuildMenu(Dictionary<int, IExample> examples)
         {
-            Console.WriteLine("PayRun.IO - Getting Started Examples");
-            Console.WriteLine("See: https://np-beta.atlassian.net/wiki/pages/viewpage.action?spaceKey=BP&title=Getting+Started");
+            Console.WriteLine("PayRun.IO - How-to Examples");
+            Console.WriteLine("See: https://developer.test.payrun.io/docs/how-to/Examples.html");
             Console.WriteLine("===================================");
             Console.WriteLine(string.Empty);
 
