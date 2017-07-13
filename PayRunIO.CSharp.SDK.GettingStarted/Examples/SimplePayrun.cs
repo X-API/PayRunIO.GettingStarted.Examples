@@ -14,20 +14,21 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
     using System.Threading;
 
     using PayRunIO.Core.Enums;
+    using PayRunIO.CSharp.SDK.GettingStarted.Properties;
     using PayRunIO.Models;
 
     public class SimplePayrun : ExampleBase
     {
         public override string Title => "Simple Payrun";
 
-        public override string DocsUrl => "https://np-beta.atlassian.net/wiki/pages/viewpage.action?spaceKey=BP&title=Getting+Started";
+        public override string DocsUrl => "/docs/how-to/simple-payrun.html";
 
         public override int Order => 1;
 
         public override void Execute()
         {
             Console.WriteLine("Executing Example: " + this.Title);
-            Console.WriteLine("See: " + this.DocsUrl);
+            Console.WriteLine("See: " + Settings.Default.DeveloperPortalBaseUrl + this.DocsUrl);
             Console.WriteLine("===================================");
 
             // Step 1: Create an Employer

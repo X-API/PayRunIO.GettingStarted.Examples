@@ -25,15 +25,6 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.test.payrun.io")]
-        public string ApiEndpoint {
-            get {
-                return ((string)(this["ApiEndpoint"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ozPpjEMEPUJ6genpa2lw")]
         public string ConsumerKey {
             get {
@@ -47,6 +38,42 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Properties {
         public string ConsumerSecret {
             get {
                 return ((string)(this["ConsumerSecret"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.test.payrun.io")]
+        public string ApiEndpoint {
+            get {
+                return ((string)(this["ApiEndpoint"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://developer.test.payrun.io")]
+        public string DeveloperPortalBaseUrl {
+            get {
+                return ((string)(this["DeveloperPortalBaseUrl"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("application/xml")]
+        public string ContentTypeHeader {
+            get {
+                return ((string)(this["ContentTypeHeader"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("application/xml")]
+        public string AcceptHeader {
+            get {
+                return ((string)(this["AcceptHeader"]));
             }
         }
     }

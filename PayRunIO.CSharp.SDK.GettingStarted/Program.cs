@@ -6,6 +6,7 @@
     using System.Reflection;
 
     using PayRunIO.CSharp.SDK.GettingStarted.Examples;
+    using PayRunIO.CSharp.SDK.GettingStarted.Properties;
 
     public class Program
     {
@@ -77,7 +78,7 @@
         private static void BuildMenu(Dictionary<int, IExample> examples)
         {
             Console.WriteLine("PayRun.IO - How-to Examples");
-            Console.WriteLine("See: https://developer.test.payrun.io/docs/how-to/Examples.html");
+            Console.WriteLine($"See: {Settings.Default.DeveloperPortalBaseUrl}/docs/how-to/examples.html");
             Console.WriteLine("===================================");
             Console.WriteLine(string.Empty);
 
