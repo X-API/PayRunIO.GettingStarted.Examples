@@ -1,25 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.272" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.284" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="Link.xsd" />
+  
   <xsd:element name="PayCode" type="PayCode" />
     <xsd:complexType name="PayCode">
       <xsd:all>
-        <xsd:element minOccurs="1" maxOccurs="1" name="Code" type="SystemCode"/>
-        <xsd:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="Code" type="SystemCode">
+          <xsd:annotation>
+            <xsd:documentation>The pay code identifier referenced on calcualtion pay lines. Example: BASIC</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="xsd:date">
+          <xsd:annotation>
+            <xsd:documentation>The date when the pay code become effective.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
         <xsd:element minOccurs="0" maxOccurs="1" name="Description">
+          <xsd:annotation>
+            <xsd:documentation>The description of the pay code. Example: Standard basic pay.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="200"/>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element minOccurs="1" maxOccurs="1" name="Niable" type="xsd:boolean" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Taxable" type="xsd:boolean" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Benefit" type="xsd:boolean" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Readonly" type="xsd:boolean" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Territory" type="CalculatorTerritory" default="UnitedKingdom" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Region" type="CalculatorRegion" default="England" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Type" type="SystemCodeType" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="Niable" type="xsd:boolean">
+          <xsd:annotation>
+            <xsd:documentation>Indicates if the value of the pay line should be applied before national insuration contribution calculation.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Taxable" type="xsd:boolean">
+          <xsd:annotation>
+            <xsd:documentation>Indicates if the value of the pay line should be applied before PAYE tax calculation.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Benefit" type="xsd:boolean">
+          <xsd:annotation>
+            <xsd:documentation>Indicates if the value of the pay line is considerd a benifit.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Readonly" type="xsd:boolean">
+          <xsd:annotation>
+            <xsd:documentation>Determines if the pay code can be edited. Readonly pay codes cannot be altered.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Territory" type="CalculatorTerritory" default="UnitedKingdom">
+          <xsd:annotation>
+            <xsd:documentation>Determines the calculator territory to be used when processing pay lines that reference this pay code.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Region" type="CalculatorRegion" default="England">
+          <xsd:annotation>
+            <xsd:documentation>Determines the calculator region to be used when processing pay lines that reference this pay code.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Type" type="SystemCodeType">
+          <xsd:annotation>
+            <xsd:documentation>The type of payment code; either Payment or Dedution.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="NominalCode" type="Link">
+          <xsd:annotation>
+            <xsd:documentation>
+              A link to the associated nominal ledger code. Nominal codes are used to group pay codes into journal accounts.
+              <span class="note">
+                See <a href="/docs/reference/nominal-code/index.html">Nominal Code</a> for more details.
+              </span>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
       </xsd:all>
   </xsd:complexType>
 </xsd:schema>

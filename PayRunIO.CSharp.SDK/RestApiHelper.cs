@@ -10,10 +10,12 @@
 namespace PayRunIO.CSharp.SDK
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Net;
     using System.Xml;
 
+    using PayRunIO.DataAccess.Helpers;
     using PayRunIO.Models;
     using PayRunIO.OAuth1;
     using PayRunIO.OAuth1.Helpers;
@@ -44,18 +46,32 @@ namespace PayRunIO.CSharp.SDK
         private readonly string hostEndpoint;
 
         /// <summary>
+        /// The content type.
+        /// </summary>
+        private readonly string contentTypeHeader;
+
+        /// <summary>
+        /// Gets the accept header.
+        /// </summary>
+        private readonly string acceptHeader;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RestApiHelper" /> class.
         /// </summary>
         /// <param name="signatureGenerator">The signature generator.</param>
         /// <param name="consumerKey">The consumer key.</param>
         /// <param name="consumerSecret">The consumer secret.</param>
         /// <param name="hostEndpoint">The host endpoint.</param>
-        public RestApiHelper(IOAuthSignatureGenerator signatureGenerator, string consumerKey, string consumerSecret, string hostEndpoint)
-        {
+        /// <param name="contentTypeHeader">The content-type header to be used (either <c>application/json</c> or <c>application/xml</c>).</param>
+        /// <param name="acceptHeader">The accept header to be used (either <c>application/json</c> or <c>application/xml</c>).</param>
+        public RestApiHelper(IOAuthSignatureGenerator signatureGenerator, string consumerKey, string consumerSecret, string hostEndpoint, string contentTypeHeader, string acceptHeader)
+        {      
             this.signatureGenerator = signatureGenerator;
             this.consumerKey = consumerKey;
             this.consumerSecret = consumerSecret;
             this.hostEndpoint = hostEndpoint;
+            this.contentTypeHeader = contentTypeHeader;
+            this.acceptHeader = acceptHeader;
         }
 
         /// <summary>
@@ -76,10 +92,12 @@ namespace PayRunIO.CSharp.SDK
             where TDto : DtoBase
         {
             var request = this.CreateAuthorisedRequest(urlPath, "PATCH", patchStream);
-
+            
             using (var response = this.GetResponse(request))
             {
-                var output = XmlSerialiserHelper.DeserialiseStream<TDto>(response.GetResponseStream());
+                var xmlDoc = XmlSerialiserHelper.ContentStreamToXmlDocument(response.GetResponseStream(), response.ContentType);
+
+                var output = XmlSerialiserHelper.Deserialise<TDto>(xmlDoc.InnerXml);
 
                 return output;
             }
@@ -99,7 +117,9 @@ namespace PayRunIO.CSharp.SDK
 
             using (var response = this.GetResponse(request))
             {
-                var output = XmlSerialiserHelper.DeserialiseStream<Link>(response.GetResponseStream());
+                var xmlDoc = XmlSerialiserHelper.ContentStreamToXmlDocument(response.GetResponseStream(), response.ContentType);
+
+                var output = XmlSerialiserHelper.Deserialise<Link>(xmlDoc.InnerXml);
 
                 return output;
             }
@@ -120,7 +140,9 @@ namespace PayRunIO.CSharp.SDK
 
             using (var response = this.GetResponse(request))
             {
-                var output = XmlSerialiserHelper.DeserialiseStream<LinkCollection>(response.GetResponseStream());
+                var xmlDoc = XmlSerialiserHelper.ContentStreamToXmlDocument(response.GetResponseStream(), response.ContentType);
+
+                var output = XmlSerialiserHelper.Deserialise<LinkCollection>(xmlDoc.InnerXml);
 
                 return output;
             }
@@ -142,7 +164,9 @@ namespace PayRunIO.CSharp.SDK
 
             using (var response = this.GetResponse(request))
             {
-                var output = XmlSerialiserHelper.DeserialiseStream<TDto>(response.GetResponseStream());
+                var xmlDoc = XmlSerialiserHelper.ContentStreamToXmlDocument(response.GetResponseStream(), response.ContentType);
+
+                var output = XmlSerialiserHelper.Deserialise<TDto>(xmlDoc.InnerXml);
 
                 return output;
             }
@@ -176,7 +200,9 @@ namespace PayRunIO.CSharp.SDK
 
             using (var response = this.GetResponse(request))
             {
-                var output = XmlSerialiserHelper.DeserialiseStream<TDto>(response.GetResponseStream());
+                var xmlDoc = XmlSerialiserHelper.ContentStreamToXmlDocument(response.GetResponseStream(), response.ContentType);
+
+                var output = XmlSerialiserHelper.Deserialise<TDto>(xmlDoc.InnerXml);
 
                 return output;
             }
@@ -226,7 +252,6 @@ namespace PayRunIO.CSharp.SDK
         public XmlDocument GetRawXml(string urlPath)
         {
             var request = this.CreateAuthorisedRequest(urlPath, "GET");
-
             request.Accept = "application/xml";
 
             using (var response = this.GetResponse(request))
@@ -242,6 +267,34 @@ namespace PayRunIO.CSharp.SDK
                 xmlDoc.Load(responseStream);
 
                 return xmlDoc;
+            }
+        }
+
+        /// <summary>
+        /// [GET] raw JSON from specified url path.
+        /// </summary>
+        /// <param name="urlPath">The url path.</param>
+        /// <returns>
+        /// The JSON string />.
+        /// </returns>
+        public string GetRawJson(string urlPath)
+        {
+            var request = this.CreateAuthorisedRequest(urlPath, "GET");
+            request.Accept = "application/json";
+
+            using (var response = this.GetResponse(request))
+            {
+                var responseStream = response.GetResponseStream();
+
+                if (responseStream == null)
+                {
+                    throw new ArgumentException($"No response stream received: {urlPath}", nameof(urlPath));
+                }
+
+                var streamReader = new StreamReader(responseStream);
+                var jsonResponse = streamReader.ReadToEnd();
+
+                return jsonResponse;
             }
         }
 
@@ -332,6 +385,8 @@ namespace PayRunIO.CSharp.SDK
                 signature);
 
             request.Headers.Add("Authorization", authHeader);
+            request.Accept = this.acceptHeader;
+            request.ContentType = this.contentTypeHeader;
 
             request.Timeout = (int)TimeSpan.FromMinutes(5).TotalMilliseconds;
 
@@ -352,16 +407,51 @@ namespace PayRunIO.CSharp.SDK
         {
             var request = this.CreateAuthorisedRequest(path, method);
 
-            using (var payloadStream = XmlSerialiserHelper.Serialise(payloadToAdd))
+            if (this.contentTypeHeader.Equals("application/xml"))
             {
-                request.ContentLength = payloadStream.Length;
+                using (var payloadStream = XmlSerialiserHelper.Serialise(payloadToAdd))
+                {
+                    request.ContentLength = payloadStream.Length;
 
-                payloadStream.CopyTo(request.GetRequestStream());
+                    payloadStream.CopyTo(request.GetRequestStream());
 
-                payloadStream.Flush();
+                    payloadStream.Flush();
+
+                    this.DebugPayload(payloadStream);
+                }
             }
+            else
+            {
+                using (var payloadStream = JsonSerialiserHelper.Serialise(payloadToAdd))
+                {
+                    request.ContentLength = payloadStream.Length;
 
+                    payloadStream.CopyTo(request.GetRequestStream());
+
+                    payloadStream.Flush();
+
+                    this.DebugPayload(payloadStream);
+                }
+            }
+            
             return request;
+        }
+
+        /// <summary>
+        /// Outputs the request payload to the 
+        /// </summary>
+        /// <param name="payloadStream">
+        /// The payload stream.
+        /// </param>
+        private void DebugPayload(Stream payloadStream)
+        {
+            payloadStream.Position = 0;
+
+            var streamReader = new StreamReader(payloadStream);
+
+            var payload = streamReader.ReadToEnd();
+
+            Debug.WriteLine(payload);
         }
 
         /// <summary>

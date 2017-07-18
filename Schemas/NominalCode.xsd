@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="0.1.0.284" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  
+  <xsd:element name="NominalCode" type="NominalCode" />
+    <xsd:complexType name="NominalCode">
+      <xsd:all>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Key">
+          <xsd:annotation>
+            <xsd:documentation>The nominal code account identifier.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="3" />
+              <xsd:maxLength value="15"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Description">
+          <xsd:annotation>
+            <xsd:documentation>The nominal code account description.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="250"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:all>
+  </xsd:complexType>
+</xsd:schema>

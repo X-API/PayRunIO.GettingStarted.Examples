@@ -7,13 +7,17 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace PayRunIO.CSharp.SDK
+namespace PayRunIO.DataAccess.Helpers
 {
     using System;
     using System.Collections.Concurrent;
     using System.IO;
+    using System.Text;
+    using System.Text.RegularExpressions;
     using System.Xml;
     using System.Xml.Serialization;
+
+    using Newtonsoft.Json;
 
     using PayRunIO.Models;
 
@@ -71,6 +75,25 @@ namespace PayRunIO.CSharp.SDK
         }
 
         /// <summary>
+        /// Deserialises the specified source string.
+        /// </summary>
+        /// <typeparam name="T">The type</typeparam>
+        /// <param name="sourceXml">The source string XML</param>
+        /// <returns>The deserialised object</returns>
+        public static T Deserialise<T>(string sourceXml)
+        {
+            var objType = typeof(T);
+
+            var serialiser = GetXmlSerializer(objType);
+
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(sourceXml));
+
+            var result = (T)serialiser.Deserialize(stream);
+
+            return result;
+        }
+
+        /// <summary>
         /// Deserialises the stream.
         /// </summary>
         /// <typeparam name="TDto">The type of the DTO.</typeparam>
@@ -78,7 +101,7 @@ namespace PayRunIO.CSharp.SDK
         /// <returns>
         /// Instance of <see cref="TDto"/>.
         /// </returns>
-        public static TDto DeserialiseStream<TDto>(Stream sourceStream)
+        public static TDto DeserialiseDtoStream<TDto>(Stream sourceStream)
             where TDto : DtoBase
         {
             var dtoType = typeof(TDto);
@@ -117,7 +140,7 @@ namespace PayRunIO.CSharp.SDK
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        public static object DeserialiseStream(Stream sourceStream, Type dtoType)
+        public static object DeserialiseDtoStream(Stream sourceStream, Type dtoType)
         {
             var serialiser = GetXmlSerializer(dtoType);
 
@@ -146,6 +169,29 @@ namespace PayRunIO.CSharp.SDK
         }
 
         /// <summary>
+        /// Creates an xml document from the specified content stream.
+        /// </summary>
+        /// <param name="stream">The stream.</param>
+        /// <param name="contentType">The content type.</param>
+        /// <returns>
+        /// The <see cref="XmlDocument"/>.
+        /// </returns>
+        public static XmlDocument ContentStreamToXmlDocument(Stream stream, string contentType)
+        {
+            var isXmlContent = Regex.IsMatch(contentType, @"application\/xml|text\/xml|application\/vnd\.[^;]+\+xml");
+            var isJsonContent = Regex.IsMatch(contentType, @"application\/json|text\/json|application\/vnd\.[^;]+\+json");
+
+            if (!isXmlContent && !isJsonContent)
+            {
+                throw new NotSupportedException($"The specified content type '{contentType}' is not currently supported.");
+            }
+
+            var xmlDoc = isXmlContent ? LoadXmlStreamContent(stream) : LoadJsonStreamContent(stream);
+
+            return xmlDoc;
+        }
+
+        /// <summary>
         /// Gets the XML serialiser for the specified DTO type.
         /// </summary>
         /// <param name="dtoType">The DTO type.</param>
@@ -163,6 +209,65 @@ namespace PayRunIO.CSharp.SDK
             }
 
             return serialiser;
+        }
+
+        /// <summary>
+        /// Loads the XML stream content into an XML document object.
+        /// </summary>
+        /// <param name="xmlDataStream">The xml data stream.</param>
+        /// <returns>
+        /// The <see cref="XmlDocument"/>.
+        /// </returns>
+        private static XmlDocument LoadXmlStreamContent(Stream xmlDataStream)
+        {
+            var xmlDoc = new XmlDocument();
+
+            try
+            {
+                xmlDoc.Load(xmlDataStream);
+
+                return xmlDoc;
+            }
+            catch (XmlException xmlEx)
+            {
+                throw new InvalidDataException("XML data stream is not valid. " + xmlEx.Message, xmlEx);
+            }
+        }
+
+        /// <summary>
+        /// Loads the JSON stream content into an XML document object.
+        /// </summary>
+        /// <param name="jsonDataStream">The JSON data stream.</param>
+        /// <returns>
+        /// The <see cref="XmlDocument"/>.
+        /// </returns>
+        private static XmlDocument LoadJsonStreamContent(Stream jsonDataStream)
+        {
+            // Note leave stream open for use outside this scope.
+            var json = new StreamReader(jsonDataStream).ReadToEnd();
+
+            if (json.Contains("\"@xsi:") && !json.Contains("\"@xmlns:xsi\":"))
+            {
+                var rootMatch = Regex.Match(json, "\"\\w+\": \\{");
+
+                if (rootMatch.Success)
+                {
+                    json = json.Replace(
+                        rootMatch.Value,
+                        rootMatch.Value + "\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\",");
+                }
+            }
+
+            try
+            {
+                var xmlDoc = JsonConvert.DeserializeXmlNode(json);
+
+                return xmlDoc;
+            }
+            catch (JsonReaderException jsonEx)
+            {
+                throw new InvalidDataException("Json data stream is not valid. " + jsonEx.Message, jsonEx);
+            }
         }
     }
 }
