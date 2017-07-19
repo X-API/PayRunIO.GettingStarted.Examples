@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.284" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.288" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Link.xsd" />
   
@@ -8,12 +8,22 @@
       <xsd:all>
         <xsd:element minOccurs="1" maxOccurs="1" name="Code" type="SystemCode">
           <xsd:annotation>
-            <xsd:documentation>The pay code identifier referenced on calcualtion pay lines. Example: BASIC</xsd:documentation>
+            <xsd:documentation>
+              The pay code identifier referenced on calcualtion pay lines.
+              <span class="note">
+                See <a href="/docs/key-concepts/revisible-objects.html">revisible objects</a> for more information on revisions and how they work.
+              </span>
+            </xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="xsd:date">
           <xsd:annotation>
-            <xsd:documentation>The date when the pay code become effective.</xsd:documentation>
+            <xsd:documentation>The date when the pay code revision became effective.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Revision" type="Revision">
+          <xsd:annotation>
+            <xsd:documentation>The revision number of the pay code.</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element minOccurs="0" maxOccurs="1" name="Description">
