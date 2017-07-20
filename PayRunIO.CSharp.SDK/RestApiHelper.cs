@@ -10,7 +10,6 @@
 namespace PayRunIO.CSharp.SDK
 {
     using System;
-    using System.Diagnostics;
     using System.IO;
     using System.Net;
     using System.Xml;
@@ -109,7 +108,7 @@ namespace PayRunIO.CSharp.SDK
         /// <param name="urlPath">The url path.</param>
         /// <param name="dtoToPost">The DTO to post.</param>
         /// <returns>
-        /// The <see cref="PayRunIO.Models.Link"/>.
+        /// The <see cref="Link"/>.
         /// </returns>
         public Link Post(string urlPath, DtoBase dtoToPost)
         {
@@ -132,7 +131,7 @@ namespace PayRunIO.CSharp.SDK
         /// <param name="dtoToPost">The DTO to post.</param>
         /// <typeparam name="TDto">The DTO data type.</typeparam>
         /// <returns>
-        /// The <see cref="PayRunIO.Models.LinkCollection"/>.
+        /// The <see cref="LinkCollection"/>.
         /// </returns>
         public LinkCollection Post<TDto>(string urlPath, TDto[] dtoToPost)
         {
@@ -182,7 +181,10 @@ namespace PayRunIO.CSharp.SDK
         {
             var request = this.CreateAuthorisedRequest(urlPath, "DELETE");
 
-            this.GetResponse(request).Close();
+            using (var response = this.GetResponse(request))
+            {
+                response.Close();
+            }
         }
 
         /// <summary>
@@ -235,7 +237,7 @@ namespace PayRunIO.CSharp.SDK
         /// </summary>
         /// <param name="urlPath">The url path.</param>
         /// <returns>
-        /// The <see cref="PayRunIO.Models.LinkCollection"/>.
+        /// The <see cref="LinkCollection"/>.
         /// </returns>
         public LinkCollection GetLinks(string urlPath)
         {
@@ -407,51 +409,26 @@ namespace PayRunIO.CSharp.SDK
         {
             var request = this.CreateAuthorisedRequest(path, method);
 
-            if (this.contentTypeHeader.Equals("application/xml"))
+            Func<TDto, Stream> serialiser;
+            if (this.contentTypeHeader.Equals("application/json"))
             {
-                using (var payloadStream = XmlSerialiserHelper.Serialise(payloadToAdd))
-                {
-                    request.ContentLength = payloadStream.Length;
-
-                    payloadStream.CopyTo(request.GetRequestStream());
-
-                    payloadStream.Flush();
-
-                    this.DebugPayload(payloadStream);
-                }
+                serialiser = dto => JsonSerialiserHelper.Serialise(dto);
             }
             else
             {
-                using (var payloadStream = JsonSerialiserHelper.Serialise(payloadToAdd))
-                {
-                    request.ContentLength = payloadStream.Length;
+                serialiser = dto => XmlSerialiserHelper.Serialise(dto);
+            }
 
-                    payloadStream.CopyTo(request.GetRequestStream());
+            using (var payloadStream = serialiser(payloadToAdd))
+            {
+                request.ContentLength = payloadStream.Length;
 
-                    payloadStream.Flush();
+                payloadStream.CopyTo(request.GetRequestStream());
 
-                    this.DebugPayload(payloadStream);
-                }
+                payloadStream.Flush();
             }
             
             return request;
-        }
-
-        /// <summary>
-        /// Outputs the request payload to the 
-        /// </summary>
-        /// <param name="payloadStream">
-        /// The payload stream.
-        /// </param>
-        private void DebugPayload(Stream payloadStream)
-        {
-            payloadStream.Position = 0;
-
-            var streamReader = new StreamReader(payloadStream);
-
-            var payload = streamReader.ReadToEnd();
-
-            Debug.WriteLine(payload);
         }
 
         /// <summary>
