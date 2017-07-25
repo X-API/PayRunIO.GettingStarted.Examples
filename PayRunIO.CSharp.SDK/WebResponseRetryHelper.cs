@@ -12,6 +12,7 @@ namespace PayRunIO.CSharp.SDK
     using System;
     using System.IO;
     using System.Net;
+    using System.Net.Sockets;
     using System.Threading;
 
     /// <summary>
@@ -39,9 +40,9 @@ namespace PayRunIO.CSharp.SDK
                 }
                 catch (WebException webEx)
                 {
-                    var exceptionResponse = webEx.Response as HttpWebResponse;
+                    var innerException = webEx.InnerException as SocketException;
 
-                    if (!RequestWasActivelyRefused(exceptionResponse))
+                    if (innerException == null || !innerException.Message.Contains("No connection could be made because the target machine actively refused it"))
                     {
                         throw;
                     }
@@ -54,29 +55,6 @@ namespace PayRunIO.CSharp.SDK
                     Thread.Sleep(100);
                 }
             }
-        }
-
-        /// <summary>
-        /// Determines if the request was actively refused by the remote server.
-        /// </summary>
-        /// <param name="webResponse">The web response.</param>
-        /// <returns>
-        /// <c>True</c> if the request was actively refused; otherwise <c>false</c>.
-        /// </returns>
-        private static bool RequestWasActivelyRefused(WebResponse webResponse)
-        {
-            var responseStream = webResponse?.GetResponseStream();
-
-            if (responseStream == null)
-            {
-                return false;
-            }
-
-            var streamReader = new StreamReader(responseStream);
-            var responseMessage = streamReader.ReadToEnd();
-            responseStream.Seek(0, SeekOrigin.Begin);
-
-            return responseMessage.Contains("No connection could be made because the target machine actively refused it");
         }
     }
 }
