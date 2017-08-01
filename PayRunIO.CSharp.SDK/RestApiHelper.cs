@@ -368,6 +368,12 @@ namespace PayRunIO.CSharp.SDK
             var nonce = Nonce.New();
             var timeStamp = TimeStampHelper.ConvertToTimeStamp(DateTime.Now);
 
+            // Check for double slash errors
+            if (this.hostEndpoint.EndsWith("/") && path.StartsWith("/"))
+            {
+                path = path.Substring(1);
+            }
+
             var request = (HttpWebRequest)WebRequest.Create(this.hostEndpoint + path);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             request.Method = method;
