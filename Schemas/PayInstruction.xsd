@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.310" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.311" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:complexType name="PayInstruction">
     
@@ -28,7 +28,7 @@
             <xsd:documentation>
               The pay line descripton override; this description will override the default description from the pay code.
               <span class="note">
-                See <a href="/docs/key-concepts/customising-the-payslip.html">Customising the Payslip</a> for more information on cusmsising the payslip outout and using runtime variables.
+                See <a href="/docs/key-concepts/customising-the-payslip.html">Customising the Payslip</a> for more information on customising the payslip output and using runtime variables.
               </span>
             </xsd:documentation>
           </xsd:annotation>

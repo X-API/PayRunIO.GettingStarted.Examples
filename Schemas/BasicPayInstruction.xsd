@@ -1,17 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.310" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.311" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="PayInstruction.xsd" />
 
   <xsd:element name="BasicPayInstruction" type="BasicPayInstruction" />
 
+  <xsd:annotation>
+    <xsd:documentation>
+      The Basic Pay Instruction can be used to calculate gross pay based on a monetary rate and and a number of units.
+      This information can then be displayed on the paylip along with an optional unit of measure (e.g. hours).
+    </xsd:documentation>
+  </xsd:annotation>
+  
   <xsd:complexType name="BasicPayInstruction">
     <xsd:complexContent>
       <xsd:extension base="PayInstruction">
         <xsd:sequence>
-          <xsd:element minOccurs="1" maxOccurs="1" name="Rate" type="Money" />
-          <xsd:element minOccurs="0" maxOccurs="1" name="RateUoM" type="UomBasicPay" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Rate" type="Money">
+            <xsd:annotation>
+              <xsd:documentation>
+                The monetary rate to be used.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="RateUoM" type="UomBasicPay">
+            <xsd:annotation>
+              <xsd:documentation>
+                The unit of measure for the payment.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
           <xsd:element minOccurs="1" maxOccurs="1" name="Units">
+            <xsd:annotation>
+              <xsd:documentation>
+                The number of units to be used.
+              </xsd:documentation>
+            </xsd:annotation>
             <xsd:simpleType>
               <xsd:restriction base="xsd:decimal" />
             </xsd:simpleType>

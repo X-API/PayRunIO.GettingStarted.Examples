@@ -1,16 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.310" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.311" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="PayInstruction.xsd" />
 
   <xsd:element name="NiPayInstruction" type="NiPayInstruction" />
 
+  <xsd:annotation>
+    <xsd:documentation>
+      The NI Pay Instruction is used to configure the employee&#39;s National Insurnace calculations.
+  </xsd:documentation>
+  </xsd:annotation>
+
   <xsd:complexType name="NiPayInstruction">
     <xsd:complexContent>
       <xsd:extension base="PayInstruction">
         <xsd:sequence>
-          <xsd:element minOccurs="1" maxOccurs="1" name="DirCalculationMethod" type="DirCalculationMethod" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="DirCalculationMethod" type="DirCalculationMethod">
+            <xsd:annotation>
+              <xsd:documentation>
+                The calcultation method to be used when treating and employee as a director.
+                See <a href="/docs/payroll-help/employees-as-directors.html">employees as directors</a> for more information.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
           <xsd:element minOccurs="1" maxOccurs="1" name="WeeksAsDir">
+            <xsd:annotation>
+              <xsd:documentation>
+                The number of weeks in the current tax year that the employee has been a director.
+                If the appointment date is prior to the start of the current tax year then you should enter 52.
+              </xsd:documentation>
+            </xsd:annotation>
             <xsd:simpleType>
               <xsd:restriction base="xsd:integer">
                 <xsd:minInclusive value="0"/>
@@ -18,7 +37,16 @@
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:element>
-          <xsd:element minOccurs="1" maxOccurs="1" name="NiLetter" type="NiLetter" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="NiLetter" type="NiLetter">
+            <xsd:annotation>
+              <xsd:documentation>
+                The employee&#39;s NI letter category.
+                <span class="note">
+                  See <a href="/docs/payroll-help/using-the-correct-ni-letter.html">using the correct NI letter</a> for more information.
+                </span>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>

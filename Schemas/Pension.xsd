@@ -1,70 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.310" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.311" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
 
   <xsd:element name="Pension" type="Pension" />
-    <xsd:complexType name="Pension">
-      <xsd:all>
-        <xsd:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="xsd:date" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="Revision" type="Revision" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="Code" type="SystemCode"/>
-        <xsd:element minOccurs="1" maxOccurs="1" name="SchemeName">
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="250"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
-        <xsd:element minOccurs="1" maxOccurs="1" name="ProviderName">
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="250"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
-        <xsd:element minOccurs="1" maxOccurs="1" name="ProviderEmployerRef">
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
-        <xsd:element minOccurs="0" maxOccurs="1" name="Group">
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
-        <xsd:element minOccurs="0" maxOccurs="1" name="SubGroup">
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionCash" type="Money" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionCash" type="Money" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionPercent" type="Percentage" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionPercent" type="Percentage" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="LowerThreshold" type="Money" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="UpperThreshold" type="Money" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="TaxationMethod" type="PensionTaxationMethod" />
-        <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="ContributionDeductionDay" type="DayOfMonth" />
-        <xsd:element minOccurs="1" maxOccurs="1" name="PensionablePayCodes">
-          <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="unbounded" name="PayCode" type="SystemCode" />
-            </xsd:sequence>
-          </xsd:complexType>
-        </xsd:element>
-        <xsd:element minOccurs="1" maxOccurs="1" name="QualifyingPayCodes">
-          <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="unbounded" name="PayCode" type="SystemCode" />
-            </xsd:sequence>
-          </xsd:complexType>
-        </xsd:element>
-      </xsd:all>
+  <xsd:annotation>
+    <xsd:documentation>
+      The pension entity represents the default configuration of an employer's pension scheme; it is a revisible object so that changes to the scheme over time 
+      are correctly represented in the payroll history.
+      <span class="note">
+        See <a href="/docs/key-concepts/revisible-objects.html">revisible objects</a> for more information on revisions and how they work.
+      </span>
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:complexType name="Pension">
+    <xsd:all>
+      <xsd:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date the revision will come into effect.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Revision" type="Revision">
+        <xsd:annotation>
+          <xsd:documentation>The revision number of the pension scheme.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="Code" type="SystemCode">
+        <xsd:annotation>
+          <xsd:documentation>
+            Allows an override of the default pay code used by the pension scheme.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="SchemeName">
+        <xsd:annotation>
+          <xsd:documentation>The name of the pension scheme.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="250"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="ProviderName">
+        <xsd:annotation>
+          <xsd:documentation>The name of the pension provider.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="250"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="ProviderEmployerRef">
+        <xsd:annotation>
+          <xsd:documentation>The reference issued by the pension provider.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Group">
+        <xsd:annotation>
+          <xsd:documentation>The group name within the pension scheme.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SubGroup">
+        <xsd:annotation>
+          <xsd:documentation>The sub-group name within the pension scheme.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionCash" type="Money">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s gross cash contribution.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionCash" type="Money">
+        <xsd:annotation>
+          <xsd:documentation>The employer&#39;s gross cash contribution.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployeeContributionPercent" type="Percentage">
+        <xsd:annotation>
+          <xsd:documentation>The employee&#39;s percentage contribution from their pensionable pay.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="EmployerContributionPercent" type="Percentage">
+        <xsd:annotation>
+          <xsd:documentation>The employer&#39;s percentage contribution from the employee&#39;s pensionable pay.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="LowerThreshold" type="Money">
+        <xsd:annotation>
+          <xsd:documentation>
+            The lower earning threshold; only pensionable pay above this value will be included for calculating contributions.
+            <span class="note">
+              Threshholds are predominantly used for triggering Auto Enrolment contributions; see <a href="/docs/payroll-help/auto-enrolment.html">Auto Enrolment</a> for more information..
+            </span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="UpperThreshold" type="Money">
+        <xsd:annotation>
+          <xsd:documentation>
+            The upper earning threshold; only pensionable pay beow this value will be included for calculating contributions.
+            <span class="note">
+              Threshholds are predominantly used for triggering Auto Enrolment contributions; see <a href="/docs/payroll-help/auto-enrolment.html">Auto Enrolment</a> for more information..
+            </span>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TaxationMethod" type="PensionTaxationMethod">
+        <xsd:annotation>
+          <xsd:documentation>The taxation method to use when calculating pension contributions; this should be mandated by your pension provider.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" nillable="true" name="ContributionDeductionDay" type="DayOfMonth">
+        <xsd:annotation>
+          <xsd:documentation>The normal day of the month when contributions will be deducted.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="PensionablePayCodes">
+        <xsd:annotation>
+          <xsd:documentation>The list of pay codes that contribute to the pensionable pay amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="PayCode" type="SystemCode" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="QualifyingPayCodes">
+        <xsd:annotation>
+          <xsd:documentation>The list of pay codes that contribute to the qualifying earnings pay amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="PayCode" type="SystemCode" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
   </xsd:complexType>
 </xsd:schema>
