@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="17.18.5.318" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="17.18.5.319" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="QueryConditionBase.xsd" />
   <xsd:include schemaLocation="QueryFilterBase.xsd" />
   <xsd:include schemaLocation="QueryOutputBase.xsd" />
