@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="0.1.0.315" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="0.1.0.317" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Query.xsd" />
   
@@ -21,6 +21,11 @@
             <xsd:pattern value="[A-Za-z0-9\- ]*"/>
           </xsd:restriction>
         </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Readonly" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>The report definition read only status. Read only report definitions cannot be altered or deleted.</xsd:documentation>
+        </xsd:annotation>
       </xsd:element>
       <xsd:element minOccurs="1" maxOccurs="1" name="ReportQuery" type="Query">
         <xsd:annotation>
