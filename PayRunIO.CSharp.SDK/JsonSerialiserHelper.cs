@@ -7,13 +7,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace PayRunIO.DataAccess.Helpers
+namespace PayRunIO.CSharp.SDK
 {
     using System.IO;
     using System.Text;
     using System.Xml;
 
     using Newtonsoft.Json;
+
+    using PayRunIO.DataAccess.Helpers;
 
     using Formatting = Newtonsoft.Json.Formatting;
 
@@ -57,7 +59,7 @@ namespace PayRunIO.DataAccess.Helpers
                 json = json.Replace("\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\",\r\n", string.Empty);
             }
 
-            var outputStream = new MemoryStream(Encoding.Default.GetBytes(json));
+            var outputStream = new MemoryStream(Encoding.UTF8.GetBytes(json));
 
             return outputStream;
         }
