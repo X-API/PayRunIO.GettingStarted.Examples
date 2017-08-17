@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="17.18.5.323" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="17.18.5.325" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:annotation>
     <xsd:documentation>
@@ -335,5 +335,14 @@
       <xsd:maxInclusive value="12"/>
     </xsd:restriction>
   </xsd:simpleType>
-  
+
+  <xsd:simpleType name="href">
+    <xsd:annotation>
+      <xsd:documentation>The relative URL path to a resource.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="^\/{1}[a-zA-Z0-9-\/]+$"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
 </xsd:schema>
