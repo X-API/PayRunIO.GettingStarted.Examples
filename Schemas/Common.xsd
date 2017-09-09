@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="17.18.5.356" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="17.18.5.376" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:annotation>
     <xsd:documentation>
@@ -118,8 +118,8 @@
       <xsd:documentation>An alpha-numeric system code.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
-      <xsd:minLength value="3"/>
-      <xsd:maxLength value="35"/>
+      <xsd:minLength value="2"/>
+      <xsd:maxLength value="10"/>
       <xsd:pattern value="[A-Za-z0-9]*"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -152,7 +152,6 @@
           <xsd:enumeration value="P45TaxInstructionRule" />
           <xsd:enumeration value="P45YtdTaxRule" />
           <xsd:enumeration value="YtdInstructionRule" />
-          <xsd:enumeration value="NiDirectorshipStatusChangeRule" />
           <xsd:enumeration value="TaxCodeRegionChangeRule" />
         </xsd:restriction>
       </xsd:simpleType>
@@ -345,4 +344,19 @@
     </xsd:restriction>
   </xsd:simpleType>
 
+  <xsd:simpleType name="DpsMessageType">
+    <xsd:annotation>
+      <xsd:documentation>The type of DPS message.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="P6" />
+      <xsd:enumeration value="P9" />
+      <xsd:enumeration value="SL1" />
+      <xsd:enumeration value="SL2" />
+      <xsd:enumeration value="AR" />
+      <xsd:enumeration value="NOT" />
+      <xsd:enumeration value="RTI" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  
 </xsd:schema>

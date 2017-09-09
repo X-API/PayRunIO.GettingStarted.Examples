@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="17.18.5.356" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="17.18.5.376" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="PayInstruction.xsd" />
 
@@ -7,7 +7,7 @@
 
   <xsd:annotation>
     <xsd:documentation>
-      The NI Pay Instruction is used to configure the employee&#39;s National Insurnace calculations.
+      The NI Pay Instruction is used to configure the employee&#39;s National Insurance calculations.
   </xsd:documentation>
   </xsd:annotation>
 
@@ -18,24 +18,10 @@
           <xsd:element minOccurs="1" maxOccurs="1" name="DirCalculationMethod" type="DirCalculationMethod">
             <xsd:annotation>
               <xsd:documentation>
-                The calcultation method to be used when treating and employee as a director.
+                The calculation method to be used when treating and employee as a director.
                 See <a href="/docs/payroll-help/employees-as-directors.html">employees as directors</a> for more information.
               </xsd:documentation>
             </xsd:annotation>
-          </xsd:element>
-          <xsd:element minOccurs="1" maxOccurs="1" name="WeeksAsDir">
-            <xsd:annotation>
-              <xsd:documentation>
-                The number of weeks in the current tax year that the employee has been a director.
-                If the appointment date is prior to the start of the current tax year then you should enter 52.
-              </xsd:documentation>
-            </xsd:annotation>
-            <xsd:simpleType>
-              <xsd:restriction base="xsd:integer">
-                <xsd:minInclusive value="0"/>
-                <xsd:maxInclusive value="52"/>
-              </xsd:restriction>
-            </xsd:simpleType>
           </xsd:element>
           <xsd:element minOccurs="1" maxOccurs="1" name="NiLetter" type="NiLetter">
             <xsd:annotation>

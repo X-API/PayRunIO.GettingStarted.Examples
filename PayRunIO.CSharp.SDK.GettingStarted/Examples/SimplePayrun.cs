@@ -100,7 +100,6 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
                 Initials = "TTT",
                 NiNumber = "AA000000A",
                 DateOfBirth = new DateTime(1980, 1, 1),
-                Directorship = DirCalculationMethod.Off,
                 Gender = Gender.Male,
                 NicLiability = NicLiability.IsFullyLiable,
                 Region = CalculatorRegion.England,

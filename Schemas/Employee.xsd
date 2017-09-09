@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="17.18.5.356" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="17.18.5.376" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:include schemaLocation="Common.xsd" />
   <xsd:include schemaLocation="Address.xsd" />
   <xsd:include schemaLocation="BankAccount.xsd" />
@@ -81,13 +81,10 @@
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element minOccurs="0" maxOccurs="1" name="Directorship" default="Off" type="DirCalculationMethod">
+      <xsd:element minOccurs="0" maxOccurs="1" name="DirectorshipAppointmentDate" nillable="true" type="xsd:date">
         <xsd:annotation>
           <xsd:documentation>
-            The calculation method to be used if the employee is a director.
-            <span class="note">
-              See <a href="/docs/key-concepts/employees-as-directors.html">Employees as Directors</a>
-            </span>
+            The date the directorship appointment started.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
