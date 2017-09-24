@@ -10,9 +10,8 @@
 namespace PayRunIO.CSharp.SDK
 {
     using System;
-    using System.IO;
+    using System.Globalization;
     using System.Net;
-    using System.Net.Sockets;
     using System.Threading;
 
     /// <summary>
@@ -32,6 +31,10 @@ namespace PayRunIO.CSharp.SDK
         {
             var retryCount = 0;
 
+            var millisecondsTimeout = 100;
+
+            const int MaxSleepTime = 10000;
+
             while (true)
             {
                 try
@@ -40,21 +43,106 @@ namespace PayRunIO.CSharp.SDK
                 }
                 catch (WebException webEx)
                 {
-                    var innerException = webEx.InnerException as SocketException;
-
-                    if (innerException == null || !innerException.Message.Contains("No connection could be made because the target machine actively refused it"))
+                    if (webEx.Status != WebExceptionStatus.Timeout && webEx.Status != WebExceptionStatus.ConnectFailure)
                     {
                         throw;
                     }
 
                     if (++retryCount >= maxReties)
                     {
-                        throw new WebException($"Get web response from end point '{request.RequestUri.AbsolutePath}' failed. The target machine actively refused the connection {retryCount} time(s)", webEx, webEx.Status, webEx.Response);
+                        throw new WebException($"Get web response from end point '{request.RequestUri.AbsolutePath}' failed. The target was inaccessible after {retryCount} attempt(s)", webEx, webEx.Status, webEx.Response);
                     }
 
-                    Thread.Sleep(100);
+                    Thread.Sleep(millisecondsTimeout);
+
+                    request = ((HttpWebRequest)request).Copy();
+
+                    millisecondsTimeout = Math.Min(millisecondsTimeout * 10, MaxSleepTime);
                 }
             }
+        }
+
+        /// <summary>
+        /// Copy the request.
+        /// </summary>
+        /// <param name="requestToCopy">The request to copy.</param>
+        /// <returns>
+        /// The <see cref="HttpWebRequest"/>.
+        /// </returns>
+        private static HttpWebRequest Copy(this HttpWebRequest requestToCopy)
+        {
+            var clone = (HttpWebRequest)WebRequest.Create(requestToCopy.RequestUri);
+
+            clone.AuthenticationLevel = requestToCopy.AuthenticationLevel;
+            clone.CachePolicy = requestToCopy.CachePolicy;
+            clone.ConnectionGroupName = requestToCopy.ConnectionGroupName;
+            clone.ContentType = requestToCopy.ContentType;
+            clone.Credentials = requestToCopy.Credentials;
+            clone.ImpersonationLevel = requestToCopy.ImpersonationLevel;
+            clone.Method = requestToCopy.Method;
+            clone.PreAuthenticate = requestToCopy.PreAuthenticate;
+            clone.Proxy = requestToCopy.Proxy;
+            clone.Timeout = requestToCopy.Timeout;
+            clone.UseDefaultCredentials = requestToCopy.UseDefaultCredentials;
+
+            if (requestToCopy.ContentLength > 0)
+            {
+                clone.ContentLength = requestToCopy.ContentLength;
+            }
+
+            clone.Accept = requestToCopy.Accept;
+            clone.AllowAutoRedirect = requestToCopy.AllowAutoRedirect;
+            clone.AllowWriteStreamBuffering = requestToCopy.AllowWriteStreamBuffering;
+            clone.AutomaticDecompression = requestToCopy.AutomaticDecompression;
+            clone.ClientCertificates = requestToCopy.ClientCertificates;
+            clone.SendChunked = requestToCopy.SendChunked;
+            clone.TransferEncoding = requestToCopy.TransferEncoding;
+            clone.Connection = requestToCopy.Connection;
+            clone.ContentType = requestToCopy.ContentType;
+            clone.ContinueDelegate = requestToCopy.ContinueDelegate;
+            clone.CookieContainer = requestToCopy.CookieContainer;
+            clone.Date = requestToCopy.Date;
+            clone.Expect = requestToCopy.Expect;
+            clone.Host = requestToCopy.Host;
+            clone.IfModifiedSince = requestToCopy.IfModifiedSince;
+            clone.KeepAlive = requestToCopy.KeepAlive;
+            clone.MaximumAutomaticRedirections = requestToCopy.MaximumAutomaticRedirections;
+            clone.MaximumResponseHeadersLength = requestToCopy.MaximumResponseHeadersLength;
+            clone.MediaType = requestToCopy.MediaType;
+            clone.Pipelined = requestToCopy.Pipelined;
+            clone.ProtocolVersion = requestToCopy.ProtocolVersion;
+            clone.ReadWriteTimeout = requestToCopy.ReadWriteTimeout;
+            clone.Referer = requestToCopy.Referer;
+            clone.Timeout = requestToCopy.Timeout;
+            clone.UnsafeAuthenticatedConnectionSharing = requestToCopy.UnsafeAuthenticatedConnectionSharing;
+            clone.UserAgent = requestToCopy.UserAgent;
+
+            var allKeys = requestToCopy.Headers.AllKeys;
+            foreach (var key in allKeys)
+            {
+                switch (key.ToLower(CultureInfo.InvariantCulture))
+                {
+                    case "accept":
+                    case "connection":
+                    case "content-length":
+                    case "content-type":
+                    case "date":
+                    case "expect":
+                    case "host":
+                    case "if-modified-since":
+                    case "range":
+                    case "referer":
+                    case "transfer-encoding":
+                    case "user-agent":
+                    case "proxy-connection":
+                        break;
+                    default:
+                        clone.Headers[key] = requestToCopy.Headers[key];
+                        break;
+                }
+            }
+
+            return clone;
         }
     }
 }

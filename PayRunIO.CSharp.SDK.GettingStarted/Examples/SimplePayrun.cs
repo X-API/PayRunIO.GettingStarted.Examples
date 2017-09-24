@@ -154,9 +154,9 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
             Console.WriteLine("Step 5: Create a Pay Run Job");
             var payRunJob = new PayRunJobInstruction
             {
-                PaymentDate = new DateTime(2016, 4, 30),
-                StartDate = new DateTime(2016, 4, 1),
-                EndDate = new DateTime(2016, 4, 30),
+                PaymentDate = new DateTime(2017, 4, 30),
+                StartDate = new DateTime(2017, 4, 1),
+                EndDate = new DateTime(2017, 4, 30),
                 PaySchedule = payScheduleLink
             };
 
@@ -189,7 +189,7 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
             var employerId = employerLink.Href.Split('/').Last();
 
             var payslipReport =
-                this.ApiHelper.GetRawXml($"/Report/PAYSLIP/run?EmployerKey={employerId}&TaxYear=2016&TaxPeriod=1");
+                this.ApiHelper.GetRawXml($"/Report/PAYSLIP/run?EmployerKey={employerId}&TaxYear=2017&TaxPeriod=1");
 
             Console.WriteLine(payslipReport.InnerXml);
 
@@ -209,10 +209,10 @@ namespace PayRunIO.CSharp.SDK.GettingStarted.Examples
                 RtiType = "FPS",
                 Generate = true,
                 Transmit = true,
-                TaxYear = 2016,
+                TaxYear = 2017,
                 Employer = employerLink,
                 PaySchedule = payScheduleLink,
-                PaymentDate = new DateTime(2016, 4, 30)
+                PaymentDate = new DateTime(2017, 4, 30)
             };
 
             jobInfoLink = this.ApiHelper.Post("/Jobs/Rti", rtiFpsJobInstruction);

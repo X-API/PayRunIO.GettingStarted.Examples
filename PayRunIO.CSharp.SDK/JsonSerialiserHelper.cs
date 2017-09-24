@@ -15,8 +15,6 @@ namespace PayRunIO.CSharp.SDK
 
     using Newtonsoft.Json;
 
-    using PayRunIO.DataAccess.Helpers;
-
     using Formatting = Newtonsoft.Json.Formatting;
 
     /// <summary>

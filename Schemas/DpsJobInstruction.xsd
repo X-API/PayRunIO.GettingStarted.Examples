@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="17.18.5.413" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="Common.xsd" />
+  <xsd:include schemaLocation="Link.xsd" />
+
+  <xsd:element name="DpsJobInstruction" type="DpsJobInstruction" />
+
+  <xsd:complexType name="DpsJobInstruction">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="HoldingDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Retrieve" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Apply" type="xsd:boolean" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FromDate" type="xsd:date" nillable="true" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Employer" type="Link" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="MessageTypes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Type" type="DpsMessageType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="MessagesToProcess">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Message" type="Link" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

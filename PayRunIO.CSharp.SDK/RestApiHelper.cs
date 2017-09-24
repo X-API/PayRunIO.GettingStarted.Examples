@@ -14,7 +14,6 @@ namespace PayRunIO.CSharp.SDK
     using System.Net;
     using System.Xml;
 
-    using PayRunIO.DataAccess.Helpers;
     using PayRunIO.Models;
     using PayRunIO.OAuth1;
     using PayRunIO.OAuth1.Helpers;

@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace PayRunIO.DataAccess.Helpers
+namespace PayRunIO.CSharp.SDK
 {
     using System;
     using System.Collections.Concurrent;

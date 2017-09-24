@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema version="17.18.5.396" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="17.18.5.413" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:annotation>
     <xsd:documentation>
@@ -119,7 +119,7 @@
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="2"/>
-      <xsd:maxLength value="10"/>
+      <xsd:maxLength value="35"/>
       <xsd:pattern value="[A-Za-z0-9]*"/>
     </xsd:restriction>
   </xsd:simpleType>
