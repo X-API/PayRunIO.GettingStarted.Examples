@@ -43,7 +43,7 @@ namespace PayRunIO.CSharp.SDK
                 }
                 catch (WebException webEx)
                 {
-                    if (webEx.Status != WebExceptionStatus.Timeout && webEx.Status != WebExceptionStatus.ConnectFailure)
+                    if (webEx.Status == WebExceptionStatus.ProtocolError)
                     {
                         throw;
                     }
