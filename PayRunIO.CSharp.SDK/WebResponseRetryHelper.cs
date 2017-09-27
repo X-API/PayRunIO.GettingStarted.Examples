@@ -31,7 +31,9 @@ namespace PayRunIO.CSharp.SDK
         {
             var retryCount = 0;
 
-            var millisecondsTimeout = 100;
+            var millisecondsTimeout = 500;
+
+            decimal waitTime = 0;
 
             const int MaxSleepTime = 10000;
 
@@ -50,14 +52,16 @@ namespace PayRunIO.CSharp.SDK
 
                     if (++retryCount >= maxReties)
                     {
-                        throw new WebException($"Get web response from end point '{request.RequestUri.AbsolutePath}' failed. The target was inaccessible after {retryCount} attempt(s)", webEx, webEx.Status, webEx.Response);
+                        throw new WebException($"Get web response from end point '{request.RequestUri.AbsolutePath}' failed. The target was inaccessible after {retryCount} attempt(s) and {Math.Round(waitTime / 1000, 3)} seconds.", webEx, webEx.Status, webEx.Response);
                     }
 
                     Thread.Sleep(millisecondsTimeout);
 
+                    waitTime += millisecondsTimeout;
+
                     request = ((HttpWebRequest)request).Copy();
 
-                    millisecondsTimeout = Math.Min(millisecondsTimeout * 10, MaxSleepTime);
+                    millisecondsTimeout = Math.Min(millisecondsTimeout * 2, MaxSleepTime);
                 }
             }
         }
