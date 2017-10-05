@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PayRunIO.GettingStarted.Examples.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConsumerKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ozPpjEMEPUJ6genpa2lw</Value>
+    </Setting>
+    <Setting Name="ConsumerSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Vj7fC5oh02u2g0Hm4pEXA6crI57lh9UiHC0wPg6lQyg</Value>
+    </Setting>
+    <Setting Name="ApiEndpoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api.test.payrun.io</Value>
+    </Setting>
+    <Setting Name="DeveloperPortalBaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://developer.test.payrun.io</Value>
+    </Setting>
+    <Setting Name="ContentTypeHeader" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">application/xml</Value>
+    </Setting>
+    <Setting Name="AcceptHeader" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">application/xml</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
