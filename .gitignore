@@ -34,16 +34,7 @@ stylecop.cache
 [Aa]ppSettings.config
 *.exe.config
 *.publish.xml
-**/PayRunIO.Core/DataObjects/*.cs
-!*PayRunIO.Core/DataObjects/PayRunIOEntities.Designer.cs
-*PayRunIOEntities.Context.cs
-**/PayRunIO.Core/Enums/RuleExclusionFlags.cs
-**/PayRunIO.Database/Tables/Audit/*.sql
-**/PayRunIO.Database/Triggers/*.sql
-**/PayRunIO.Database/Tables/YtdPayInstructions/*.sql
 tr_ClientData_Audit.sql
 ClientData_Audit.sql
 *.jfm
-**/PayRunIO.Database/Triggers/GenerateAuditTriggers.txt
-**/PayRunIO.Database/Tables/Audit/GenerateAuditTables.txt
 **/NUnit-Console/*.xml
