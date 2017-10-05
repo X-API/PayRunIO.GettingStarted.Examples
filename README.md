@@ -1,7 +1,7 @@
 # PayRunIO.GettingStarted.Examples
 PayRun.IO with getting started examples using the C# SDK. 
 <a href="#">
-<img src="http://build.cmpsoftware.co.uk/app/rest/builds/buildType:(id:PayRunIO_CSharpSdk)/statusIcon"/>
+<img src="http://build.cmpsoftware.co.uk/app/rest/builds/buildType:(id:PayRunIO_CSharpGettingStartedExamples)/statusIcon"/>
 </a>
 ## Practical Examples
 1. [Simple Payrun: a guide to creating and executing your very first payrun.](https://github.com/X-API/PayRunIO.CSharp.SDK/blob/master/PayRunIO.CSharp.SDK.GettingStarted/Examples/SimplePayrun.cs)
