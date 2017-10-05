@@ -25,24 +25,6 @@ namespace PayRunIO.GettingStarted.Examples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ozPpjEMEPUJ6genpa2lw")]
-        public string ConsumerKey {
-            get {
-                return ((string)(this["ConsumerKey"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Vj7fC5oh02u2g0Hm4pEXA6crI57lh9UiHC0wPg6lQyg")]
-        public string ConsumerSecret {
-            get {
-                return ((string)(this["ConsumerSecret"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://api.test.payrun.io")]
         public string ApiEndpoint {
             get {
@@ -74,6 +56,24 @@ namespace PayRunIO.GettingStarted.Examples.Properties {
         public string AcceptHeader {
             get {
                 return ((string)(this["AcceptHeader"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#{ConsumerKey}")]
+        public string ConsumerKey {
+            get {
+                return ((string)(this["ConsumerKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#{ConsumerSecret}")]
+        public string ConsumerSecret {
+            get {
+                return ((string)(this["ConsumerSecret"]));
             }
         }
     }
