@@ -29,9 +29,6 @@ sql/
 *.GhostDoc.xml
 _buildOutputs/
 stylecop.cache
-[Aa]pp.config
-[Ww]eb.config
-[Aa]ppSettings.config
 *.exe.config
 *.publish.xml
 tr_ClientData_Audit.sql
