@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.5.466\lib\net45\mscorlib.dll</HintPath>
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.11\lib\net45\mscorlib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
