@@ -39,27 +39,27 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.41\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.43\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PayRunIO.Core.Enums, Version=17.18.6.41, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.41\lib\net45\PayRunIO.Core.Enums.dll</HintPath>
+    <Reference Include="PayRunIO.Core.Enums, Version=17.18.6.43, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.43\lib\net45\PayRunIO.Core.Enums.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PayRunIO.CSharp.SDK, Version=17.18.6.41, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.41\lib\net45\PayRunIO.CSharp.SDK.dll</HintPath>
+    <Reference Include="PayRunIO.CSharp.SDK, Version=17.18.6.43, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.43\lib\net45\PayRunIO.CSharp.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PayRunIO.Models, Version=17.18.6.41, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.41\lib\net45\PayRunIO.Models.dll</HintPath>
+    <Reference Include="PayRunIO.Models, Version=17.18.6.43, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.43\lib\net45\PayRunIO.Models.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PayRunIO.OAuth1, Version=17.18.6.41, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.41\lib\net45\PayRunIO.OAuth1.dll</HintPath>
+    <Reference Include="PayRunIO.OAuth1, Version=17.18.6.43, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.43\lib\net45\PayRunIO.OAuth1.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Polly, Version=5.3.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.41\lib\net45\Polly.dll</HintPath>
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.43\lib\net45\Polly.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
