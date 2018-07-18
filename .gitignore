@@ -35,3 +35,4 @@ tr_ClientData_Audit.sql
 ClientData_Audit.sql
 *.jfm
 **/NUnit-Console/*.xml
+.vs/*
