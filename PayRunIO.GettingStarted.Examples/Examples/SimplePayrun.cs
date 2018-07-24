@@ -213,7 +213,8 @@ namespace PayRunIO.GettingStarted.Examples.Examples
                 TaxYear = 2018,
                 Employer = employerLink,
                 PaySchedule = payScheduleLink,
-                PaymentDate = new DateTime(2018, 4, 30)
+                PaymentDate = new DateTime(2018, 4, 30),
+                Timestamp = DateTime.Now
             };
 
             jobInfoLink = this.ApiHelper.Post("/Jobs/Rti", rtiFpsJobInstruction);
