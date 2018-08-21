@@ -6,6 +6,7 @@ PayRun.IO with getting started examples using the C# SDK.
 ## Practical Examples
 1. [Simple Payrun: a guide to creating and executing your very first payrun.](https://github.com/X-API/PayRunIO.CSharp.SDK/blob/master/PayRunIO.CSharp.SDK.GettingStarted/Examples/SimplePayrun.cs)
 1. [Auto Enromnent: an example of setting up a AE compatible penstion scheme including assessements](https://github.com/X-API/PayRunIO.GettingStarted.Examples/blob/master/PayRunIO.GettingStarted.Examples/Examples/AutoEnrolment.cs)
+1. [Correcting a tax code change](https://github.com/X-API/PayRunIO.GettingStarted.Examples/blob/master/PayRunIO.GettingStarted.Examples/Examples/CorrectingTaxCode.cs)
 1. Changing and employee tax code and basis
 1. Changing an employee's NI letter
 1. Changing an empoyee's salary
