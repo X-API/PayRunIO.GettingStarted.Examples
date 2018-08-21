@@ -67,6 +67,7 @@
     <Compile Include="Examples\AutoEnrolment.cs" />
     <Compile Include="Examples\SimplePayrun.cs" />
     <Compile Include="Examples\Base\IExample.cs" />
+    <Compile Include="Examples\TestPayrun.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings1.Designer.cs">
