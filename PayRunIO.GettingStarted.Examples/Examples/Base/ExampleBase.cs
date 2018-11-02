@@ -17,6 +17,9 @@
                 Settings.Default.ApiEndpoint,
                 Settings.Default.ContentTypeHeader,
                 Settings.Default.AcceptHeader);
+
+            // Use this syntax to target a specific API version
+            this.ApiHelper.ApiVersionHeader = "18.19.1.481";
         }
 
         public RestApiHelper ApiHelper { get; private set; }
