@@ -66,9 +66,17 @@
                 }
                 else
                 {
-                    var key = int.Parse(cki.KeyChar.ToString());
-                    Console.Clear();
-                    examples[key].Execute();
+                    try
+                    {
+                        var key = int.Parse(cki.KeyChar.ToString());
+                        Console.Clear();
+                        examples[key].Execute();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+
                     Console.WriteLine("Press M to return to menu");
                 }
                 

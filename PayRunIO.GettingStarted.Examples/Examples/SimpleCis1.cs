@@ -1,7 +1,6 @@
 ﻿namespace PayRunIO.GettingStarted.Examples.Examples
 {
     using System;
-    using System.Linq;
     using System.Threading;
 
     using PayRunIO.Core.Enums;
@@ -28,7 +27,7 @@
 
             var employer = new Employer
             {
-                EffectiveDate = new DateTime(2019, 4, 6),
+                EffectiveDate = new DateTime(2020, 4, 6),
                 Name = "CIS Employer",
                 RuleExclusions = RuleExclusionFlags.None,
                 Territory = CalculatorTerritory.UnitedKingdom,
@@ -52,7 +51,7 @@
             Console.WriteLine("Step 2: Create a Subcontractor");
             var subContractor = new SubContractor
             {
-                EffectiveDate = new DateTime(2019, 4, 6),
+                EffectiveDate = new DateTime(2020, 4, 6),
                 TradingName = "Building Dreams",
                 UniqueTaxReference = "1234567882",
                 BusinessType = SubContractorType.SoleTrader,
@@ -110,9 +109,9 @@
             {
                 CisLineType = "CISBASIC",
                 PayFrequency = SubContractorPayFrequency.Monthly,
-                TaxYearStart = 2019,
+                TaxYearStart = 2020,
                 PeriodStart = 1,
-                TaxYearEnd = 2019,
+                TaxYearEnd = 2020,
                 PeriodEnd = 1,
                 UOM = UomBasicPay.Hour,
                 Units = 30,
@@ -126,9 +125,9 @@
             {
                 CisLineType = "CISMAT",
                 PayFrequency = SubContractorPayFrequency.Monthly,
-                TaxYearStart = 2019,
+                TaxYearStart = 2020,
                 PeriodStart = 1,
-                TaxYearEnd = 2019,
+                TaxYearEnd = 2020,
                 PeriodEnd = 1,
                 Value = 500.00m,
                 Description = "Materials"
@@ -142,7 +141,7 @@
             {
                 Employer = employerLink,
                 PayFrequency = SubContractorPayFrequency.Monthly,
-                TaxYear = 2019,
+                TaxYear = 2020,
                 TaxPeriod = 1
             };
 
@@ -174,7 +173,7 @@
             {
                 Employer = employerLink,
                 Timestamp = DateTime.Now,
-                TaxYear = 2019,
+                TaxYear = 2020,
                 TaxMonth = 1,
                 Generate = true,
                 Transmit = true,
