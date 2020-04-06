@@ -39,23 +39,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Core.Enums, Version=19.20.3.226, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Core.Enums.19.20.3.226\lib\net452\PayRunIO.Core.Enums.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PayRunIO.Core.Enums, Version=20.21.1.76, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Core.Enums.20.21.1.76\lib\net452\PayRunIO.Core.Enums.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.CSharp.SDK, Version=19.20.3.226, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.19.20.3.226\lib\net452\PayRunIO.CSharp.SDK.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PayRunIO.CSharp.SDK, Version=20.21.1.76, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.20.21.1.76\lib\net452\PayRunIO.CSharp.SDK.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Models, Version=19.20.3.226, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Models.19.20.3.226\lib\net452\PayRunIO.Models.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PayRunIO.Models, Version=20.21.1.76, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Models.20.21.1.76\lib\net452\PayRunIO.Models.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.OAuth1, Version=19.20.3.226, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.OAuth1.19.20.3.226\lib\net452\PayRunIO.OAuth1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PayRunIO.OAuth1, Version=20.21.1.76, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.OAuth1.20.21.1.76\lib\net452\PayRunIO.OAuth1.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

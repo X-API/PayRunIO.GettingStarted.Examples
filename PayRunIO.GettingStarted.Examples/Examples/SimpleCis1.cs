@@ -1,9 +1,12 @@
 ﻿namespace PayRunIO.GettingStarted.Examples.Examples
 {
     using System;
+    using System.IO;
+    using System.Text;
     using System.Threading;
 
     using PayRunIO.Core.Enums;
+    using PayRunIO.CSharp.SDK;
     using PayRunIO.GettingStarted.Examples.Examples.Base;
     using PayRunIO.GettingStarted.Examples.Properties;
     using PayRunIO.Models;
