@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Examples\Base\ExampleBase.cs" />
     <Compile Include="Examples\AutoEnrolment.cs" />
+    <Compile Include="Examples\NHR.cs" />
     <Compile Include="Examples\SimpleCis1.cs" />
     <Compile Include="Examples\SimpleBatch.cs" />
     <Compile Include="Examples\SimplePayrun.cs" />
