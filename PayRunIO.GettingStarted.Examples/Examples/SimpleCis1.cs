@@ -57,6 +57,7 @@
                 EffectiveDate = new DateTime(2020, 4, 6),
                 TradingName = "Building Dreams",
                 UniqueTaxReference = "1234567882",
+                WorksNumber = "SUB001",
                 BusinessType = SubContractorType.SoleTrader,
                 FirstName = "Sidney",
                 LastName = "James",
