@@ -10,7 +10,7 @@
 
     public class NHR : ExampleBase
     {
-        public override string Title => "NHR PaySchedule Update";
+        public override string Title => "NHR PaySchedule Region Update";
 
         public override string DocsUrl { get; }
 
@@ -73,38 +73,38 @@
 
             Console.WriteLine("COMPLETED employee updates");
 
-            // Step 5: Create a Pay Run Job
-            Console.WriteLine("Step 5: Create a Pay Run Job");
-            var payRunJob = new PayRunJobInstruction
-            {
-                PaymentDate = new DateTime(2020, 10, 22),
-                StartDate = new DateTime(2020, 10, 1),
-                EndDate = new DateTime(2020, 10, 31),
-                PaySchedule = payScheduleLink
-            };
+            //// Step 5: Create a Pay Run Job
+            //Console.WriteLine("Step 5: Create a Pay Run Job");
+            //var payRunJob = new PayRunJobInstruction
+            //{
+            //    PaymentDate = new DateTime(2020, 11, 20),
+            //    StartDate = new DateTime(2020, 11, 1),
+            //    EndDate = new DateTime(2020, 11, 30),
+            //    PaySchedule = payScheduleLink
+            //};
 
-            var jobInfoLink = this.ApiHelper.Post("/Jobs/Payruns", payRunJob);
-            Console.WriteLine($"  CREATED: {jobInfoLink.Title} - {jobInfoLink.Href}");
+            //var jobInfoLink = this.ApiHelper.Post("/Jobs/Payruns", payRunJob);
+            //Console.WriteLine($"  CREATED: {jobInfoLink.Title} - {jobInfoLink.Href}");
 
-            // Step 6: Query Pay Run Job Status
-            Console.WriteLine("Step 6: Query Pay Run Job Status");
-            while (true)
-            {
-                Thread.Sleep(1000);
+            //// Step 6: Query Pay Run Job Status
+            //Console.WriteLine("Step 6: Query Pay Run Job Status");
+            //while (true)
+            //{
+            //    Thread.Sleep(1000);
 
-                var payRunJobInfo = this.ApiHelper.Get<JobInfo>(jobInfoLink.Href);
-                Console.WriteLine($"  Job Status: {payRunJobInfo.JobStatus} - {payRunJobInfo.Progress:P2}");
+            //    var payRunJobInfo = this.ApiHelper.Get<JobInfo>(jobInfoLink.Href);
+            //    Console.WriteLine($"  Job Status: {payRunJobInfo.JobStatus} - {payRunJobInfo.Progress:P2}");
 
-                if (payRunJobInfo.JobStatus == JobStatus.Success)
-                {
-                    break;
-                }
+            //    if (payRunJobInfo.JobStatus == JobStatus.Success)
+            //    {
+            //        break;
+            //    }
 
-                if (payRunJobInfo.JobStatus == JobStatus.Failed)
-                {
-                    throw new Exception("Payrun job failed:" + string.Join(Environment.NewLine, payRunJobInfo.Errors));
-                }
-            }
+            //    if (payRunJobInfo.JobStatus == JobStatus.Failed)
+            //    {
+            //        throw new Exception("Payrun job failed:" + string.Join(Environment.NewLine, payRunJobInfo.Errors));
+            //    }
+            //}
         }
     }
 }
