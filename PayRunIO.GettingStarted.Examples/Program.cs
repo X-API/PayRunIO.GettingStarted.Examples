@@ -31,7 +31,10 @@
         {
             foreach (var example in examples.OrderBy(e => e.Key))
             {
-                example.Value.Execute();
+                if (!example.Value.Title.Contains("DPS"))
+                {
+                    example.Value.Execute();
+                }
             }
         }
 
