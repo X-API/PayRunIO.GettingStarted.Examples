@@ -31,7 +31,7 @@
         {
             foreach (var example in examples.OrderBy(e => e.Key))
             {
-                if (!example.Value.Title.Contains("DPS"))
+                if (!example.Value.Title.Contains("DPS") || !example.Value.Title.Contains("Reports"))
                 {
                     example.Value.Execute();
                 }
