@@ -56,13 +56,13 @@
                 EffectiveDate = new DateTime(2020, 4, 6),
                 TradingName = "Building Dreams",
                 UniqueTaxReference = "1234567882",
+                WorksNumber = "SUB001",
                 BusinessType = SubContractorType.SoleTrader,
                 FirstName = "Sidney",
                 LastName = "James",
                 NiNumber = "YW000009A",
                 Region = CalculatorRegion.England,
-                Territory = CalculatorTerritory.UnitedKingdom,
-                WorksNumber = "1234"
+                Territory = CalculatorTerritory.UnitedKingdom
             };
 
             var subcontractorLink = this.ApiHelper.Post(employerLink.Href + "/SubContractors", subContractor);
