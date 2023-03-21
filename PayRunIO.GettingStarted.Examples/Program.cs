@@ -68,9 +68,16 @@
                 {
                     try
                     {
-                        var key = int.Parse(cki.KeyChar.ToString());
-                        Console.Clear();
-                        examples[key].Execute();
+                        if (cki.KeyChar.ToString().Equals("a"))
+                        {
+                            RunAll(examples);
+                        }
+                        else
+                        {
+                            var key = int.Parse(cki.KeyChar.ToString());
+                            Console.Clear();
+                            examples[key].Execute();
+                        }
                     }
                     catch (Exception e)
                     {

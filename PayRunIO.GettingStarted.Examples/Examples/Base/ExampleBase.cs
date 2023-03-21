@@ -27,6 +27,8 @@
 
         public abstract int Order { get; }
 
+        public abstract short TaxYear { get; }
+
         public abstract void Execute();
     }
 }

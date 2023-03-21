@@ -26,6 +26,8 @@ namespace PayRunIO.GettingStarted.Examples.Examples
 
         public override int Order => 1;
 
+        public override short TaxYear => 2023;
+
         public override void Execute()
         {
             Console.WriteLine("Executing Example: " + this.Title);
@@ -37,7 +39,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
 
             var employer = new Employer
             {
-                EffectiveDate = new DateTime(2020, 1, 1),
+                EffectiveDate = new DateTime(this.TaxYear, 1, 1),
                 Name = "Getting Started Co Ltd",
                 BacsServiceUserNumber = "123456",
                 RuleExclusions = RuleExclusionFlags.None,
@@ -92,7 +94,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
             Console.WriteLine("Step 3: Create an Employee");
             var employee = new Employee
             {
-                EffectiveDate = new DateTime(2020, 4, 1),
+                EffectiveDate = new DateTime(this.TaxYear, 4, 1),
                 Code = "EMP001",
                 Title = "Mr",
                 FirstName = "Terry",
@@ -106,7 +108,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
                 Region = CalculatorRegion.England,
                 Territory = CalculatorTerritory.UnitedKingdom,
                 PaySchedule = payScheduleLink,
-                StartDate = new DateTime(2020, 4, 6),
+                StartDate = new DateTime(this.TaxYear, 4, 6),
                 StarterDeclaration = StarterDeclaration.A,
                 RuleExclusions = RuleExclusionFlags.None,
                 WorkingWeek = WorkingWeek.AllWeekDays,
@@ -144,7 +146,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
             Console.WriteLine("Step 4: Create a Pay Instruction (Salary)");
             var salaryInstruction = new SalaryPayInstruction
             {
-                StartDate = new DateTime(2020, 4, 1),
+                StartDate = new DateTime(this.TaxYear, 4, 1),
                 AnnualSalary = 25000.00m
             };
 
@@ -155,9 +157,9 @@ namespace PayRunIO.GettingStarted.Examples.Examples
             Console.WriteLine("Step 5: Create a Pay Run Job");
             var payRunJob = new PayRunJobInstruction
             {
-                PaymentDate = new DateTime(2020, 4, 30),
-                StartDate = new DateTime(2020, 4, 1),
-                EndDate = new DateTime(2020, 4, 30),
+                PaymentDate = new DateTime(this.TaxYear, 4, 30),
+                StartDate = new DateTime(this.TaxYear, 4, 1),
+                EndDate = new DateTime(this.TaxYear, 4, 30),
                 PaySchedule = payScheduleLink
             };
 
@@ -190,7 +192,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
             var employerId = employerLink.Href.Split('/').Last();
 
             var payslipReport =
-                this.ApiHelper.GetRawXml($"/Report/PAYSLIP/run?EmployerKey={employerId}&TaxYear=2020&TaxPeriod=1");
+                this.ApiHelper.GetRawXml($"/Report/PAYSLIP/run?EmployerKey={employerId}&TaxYear={this.TaxYear}&TaxPeriod=1");
 
             Console.WriteLine(payslipReport.InnerXml);
 
@@ -210,11 +212,11 @@ namespace PayRunIO.GettingStarted.Examples.Examples
                 RtiType = "FPS",
                 Generate = true,
                 Transmit = true,
-                TaxYear = 2020,
+                TaxYear = this.TaxYear,
                 Employer = employerLink,
                 PaySchedule = payScheduleLink,
-                PaymentDate = new DateTime(2020, 4, 30),
-                Timestamp = new DateTime(2020, 4, 30)
+                PaymentDate = new DateTime(this.TaxYear, 4, 30),
+                Timestamp = new DateTime(this.TaxYear, 4, 30)
             };
 
             jobInfoLink = this.ApiHelper.Post("/Jobs/Rti", rtiFpsJobInstruction);

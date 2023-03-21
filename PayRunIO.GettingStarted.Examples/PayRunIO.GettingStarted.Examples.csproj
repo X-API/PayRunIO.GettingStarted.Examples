@@ -38,23 +38,29 @@
       <HintPath>..\packages\PayRunIO.CSharp.SDK.17.18.6.11\lib\net45\mscorlib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Core.Enums, Version=20.21.2.97, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Core.Enums.20.21.2.97\lib\net452\PayRunIO.Core.Enums.dll</HintPath>
+    <Reference Include="PayRunIO.Core.Enums, Version=23.24.1.107, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Core.Enums.23.24.1.107\lib\net452\PayRunIO.Core.Enums.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.CSharp.SDK, Version=20.21.2.97, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.20.21.2.97\lib\net452\PayRunIO.CSharp.SDK.dll</HintPath>
+    <Reference Include="PayRunIO.CSharp.SDK, Version=23.24.1.107, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.23.24.1.107\lib\net452\PayRunIO.CSharp.SDK.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Models, Version=20.21.2.97, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Models.20.21.2.97\lib\net452\PayRunIO.Models.dll</HintPath>
+    <Reference Include="PayRunIO.Models, Version=23.24.1.107, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Models.23.24.1.107\lib\net452\PayRunIO.Models.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.OAuth1, Version=20.21.2.97, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.OAuth1.20.21.2.97\lib\net452\PayRunIO.OAuth1.dll</HintPath>
+    <Reference Include="PayRunIO.OAuth1, Version=23.24.1.107, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.OAuth1.23.24.1.107\lib\net452\PayRunIO.OAuth1.dll</HintPath>
+    </Reference>
+    <Reference Include="PayRunIO.Utilities, Version=23.24.1.107, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Utilities.23.24.1.107\lib\net452\PayRunIO.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

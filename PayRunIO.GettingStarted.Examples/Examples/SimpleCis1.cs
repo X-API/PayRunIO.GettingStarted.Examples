@@ -1,12 +1,9 @@
 ﻿namespace PayRunIO.GettingStarted.Examples.Examples
 {
     using System;
-    using System.IO;
-    using System.Text;
     using System.Threading;
 
     using PayRunIO.Core.Enums;
-    using PayRunIO.CSharp.SDK;
     using PayRunIO.GettingStarted.Examples.Examples.Base;
     using PayRunIO.GettingStarted.Examples.Properties;
     using PayRunIO.Models;
@@ -18,6 +15,8 @@
         public override string DocsUrl => "/docs/how-to/simple-cis.html";
 
         public override int Order => 4;
+
+        public override short TaxYear => 2022;
 
         public override void Execute()
         {
@@ -62,7 +61,8 @@
                 LastName = "James",
                 NiNumber = "YW000009A",
                 Region = CalculatorRegion.England,
-                Territory = CalculatorTerritory.UnitedKingdom
+                Territory = CalculatorTerritory.UnitedKingdom,
+                WorksNumber = "1234"
             };
 
             var subcontractorLink = this.ApiHelper.Post(employerLink.Href + "/SubContractors", subContractor);
@@ -112,9 +112,9 @@
             {
                 CisLineType = "CISBASIC",
                 PayFrequency = SubContractorPayFrequency.Monthly,
-                TaxYearStart = 2020,
+                TaxYearStart = this.TaxYear,
                 PeriodStart = 1,
-                TaxYearEnd = 2020,
+                TaxYearEnd = this.TaxYear,
                 PeriodEnd = 1,
                 UOM = UomBasicPay.Hour,
                 Units = 30,
@@ -128,9 +128,9 @@
             {
                 CisLineType = "CISMAT",
                 PayFrequency = SubContractorPayFrequency.Monthly,
-                TaxYearStart = 2020,
+                TaxYearStart = this.TaxYear,
                 PeriodStart = 1,
-                TaxYearEnd = 2020,
+                TaxYearEnd = this.TaxYear,
                 PeriodEnd = 1,
                 Value = 500.00m,
                 Description = "Materials"
@@ -144,7 +144,7 @@
             {
                 Employer = employerLink,
                 PayFrequency = SubContractorPayFrequency.Monthly,
-                TaxYear = 2020,
+                TaxYear = this.TaxYear,
                 TaxPeriod = 1
             };
 
@@ -176,7 +176,7 @@
             {
                 Employer = employerLink,
                 Timestamp = DateTime.Now,
-                TaxYear = 2020,
+                TaxYear = this.TaxYear,
                 TaxMonth = 1,
                 Generate = true,
                 Transmit = true,

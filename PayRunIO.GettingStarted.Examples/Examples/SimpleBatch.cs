@@ -26,6 +26,8 @@ namespace PayRunIO.GettingStarted.Examples.Examples
 
         public override int Order => 5;
 
+        public override short TaxYear => 2022;
+
         public override void Execute()
         {
             Console.WriteLine("Executing Example: " + this.Title);
@@ -43,7 +45,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
 
             var employer = new Employer
             {
-                EffectiveDate = new DateTime(2020, 4, 6),
+                EffectiveDate = new DateTime(this.TaxYear, 4, 6),
                 Name = "Batch Employer",
                 RuleExclusions = RuleExclusionFlags.None,
                 Territory = CalculatorTerritory.UnitedKingdom,
@@ -70,7 +72,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
             Console.WriteLine("Step 4: Create an Employee");
             var employee = new Employee
             {
-                EffectiveDate = new DateTime(2020, 4, 6),
+                EffectiveDate = new DateTime(this.TaxYear, 4, 6),
                 Code = "EMP001",
                 FirstName = "John",
                 LastName = "Smith",
@@ -90,7 +92,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
             batchJob.Instructions.Add(new BatchPostItem { Body = payScheduleA, Href = $"/Employer/{employerKey}/PaySchedules" });
             batchJob.Instructions.Add(new BatchPutItem { Body = payScheduleB, Href = $"/Employer/{employerKey}/PaySchedule/TEST001" });
             batchJob.Instructions.Add(new BatchPutItem { Body = employee, Href = $"/Employer/{employerKey}/Employees" });
-            batchJob.Instructions.Add(new BatchPatchItem { Href = $"/Employer/{employerKey}/Employee/EE001", Body = "<Employee><EffectiveDate>2020-04-06</EffectiveDate><Deactivated>true</Deactivated></Employee>" });
+            batchJob.Instructions.Add(new BatchPatchItem { Href = $"/Employer/{employerKey}/Employee/EE001", Body = $"<Employee><EffectiveDate>{this.TaxYear}-04-06</EffectiveDate><Deactivated>true</Deactivated></Employee>" });
 
             var doc = XmlSerialiserHelper.SerialiseToXmlDoc(batchJob);
 

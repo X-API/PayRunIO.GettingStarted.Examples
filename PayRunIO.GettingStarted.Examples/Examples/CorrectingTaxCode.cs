@@ -17,6 +17,8 @@
 
         public override int Order => 3;
 
+        public override short TaxYear => 2022;
+
         public override void Execute()
         {
             Console.WriteLine("Executing Example: " + this.Title);
@@ -28,7 +30,7 @@
 
             var employer = new Employer
             {
-                EffectiveDate = new DateTime(2020, 8, 1),
+                EffectiveDate = new DateTime(this.TaxYear, 8, 1),
                 Name = "Getting Started Co Ltd",
                 BacsServiceUserNumber = "123456",
                 RuleExclusions = RuleExclusionFlags.None,
@@ -83,7 +85,7 @@
             Console.WriteLine("Step 3: Create an Employee");
             var employee = new Employee
             {
-                EffectiveDate = new DateTime(2020, 8, 1),
+                EffectiveDate = new DateTime(this.TaxYear, 8, 1),
                 Code = "EMP001",
                 Title = "Mr",
                 FirstName = "Terry",
@@ -97,7 +99,7 @@
                 Region = CalculatorRegion.England,
                 Territory = CalculatorTerritory.UnitedKingdom,
                 PaySchedule = payScheduleLink,
-                StartDate = new DateTime(2020, 8, 1),
+                StartDate = new DateTime(this.TaxYear, 8, 1),
                 StarterDeclaration = StarterDeclaration.A,
                 RuleExclusions = RuleExclusionFlags.None,
                 WorkingWeek = WorkingWeek.AllWeekDays,
@@ -121,7 +123,7 @@
             Console.WriteLine("Step 4: Create a Pay Instruction (Salary)");
             var salaryInstruction = new SalaryPayInstruction
             {
-                StartDate = new DateTime(2020, 8, 1),
+                StartDate = new DateTime(this.TaxYear, 8, 1),
                 AnnualSalary = 25000.00m
             };
 
@@ -132,7 +134,7 @@
             Console.WriteLine("Step 5: Create a Tax Instruction (1185L)");
             var taxInstruction = new TaxPayInstruction
             {
-                StartDate = new DateTime(2020, 8, 1),
+                StartDate = new DateTime(this.TaxYear, 8, 1),
                 TaxCode = "1185L"
             };
 
@@ -143,9 +145,9 @@
             Console.WriteLine("Step 6: Create a Pay Run Job");
             var payRunJob = new PayRunJobInstruction
             {
-                PaymentDate = new DateTime(2020, 8, 17),
-                StartDate = new DateTime(2020, 8, 13),
-                EndDate = new DateTime(2020, 8, 19),
+                PaymentDate = new DateTime(this.TaxYear, 8, 17),
+                StartDate = new DateTime(this.TaxYear, 8, 13),
+                EndDate = new DateTime(this.TaxYear, 8, 19),
                 PaySchedule = payScheduleLink
             };
 
@@ -160,9 +162,9 @@
             Console.WriteLine("Step 8: Create a 2nd Pay Run Job");
             var payRunJob2 = new PayRunJobInstruction
             {
-                PaymentDate = new DateTime(2020, 8, 24),
-                StartDate = new DateTime(2020, 8, 20),
-                EndDate = new DateTime(2020, 8, 26),
+                PaymentDate = new DateTime(this.TaxYear, 8, 24),
+                StartDate = new DateTime(this.TaxYear, 8, 20),
+                EndDate = new DateTime(this.TaxYear, 8, 26),
                 PaySchedule = payScheduleLink
             };
 
@@ -177,7 +179,7 @@
             Console.WriteLine("Step 10: Recieve late notification of employee tax code change, requires retrospective correction.");
             var newTaxInstruction = new TaxPayInstruction
             {
-                StartDate = new DateTime(2020, 8, 20),
+                StartDate = new DateTime(this.TaxYear, 8, 20),
                 TaxCode = "1285L"
             };
 
@@ -228,7 +230,7 @@
             var employerKey = employerLink.Href.Split('/').Last();
             var payscheuleKey = payScheduleLink.Href.Split('/').Last();
             var payslipReport =
-                this.ApiHelper.GetRawXml($"/Report/PAYSLIP3/run?EmployerKey={employerKey}&PayScheduleKey={payscheuleKey}&TaxYear=2020&PaymentDate={payRunJob2.PaymentDate:yyyy-MM-dd}");
+                this.ApiHelper.GetRawXml($"/Report/PAYSLIP3/run?EmployerKey={employerKey}&PayScheduleKey={payscheuleKey}&TaxYear={this.TaxYear}&PaymentDate={payRunJob2.PaymentDate:yyyy-MM-dd}");
             Console.WriteLine(payslipReport.InnerXml);
 
             // Step 18: Review Calculation Commentary
