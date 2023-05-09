@@ -72,6 +72,7 @@
     <Compile Include="Examples\Base\ExampleBase.cs" />
     <Compile Include="Examples\AutoEnrolment.cs" />
     <Compile Include="Examples\GetReports.cs" />
+    <Compile Include="Examples\MigrateContactGroup.cs" />
     <Compile Include="Examples\SimpleCis1.cs" />
     <Compile Include="Examples\SimpleBatch.cs" />
     <Compile Include="Examples\GetDpsMessages.cs" />
