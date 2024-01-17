@@ -41,20 +41,20 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Core.Enums, Version=22.23.5.64, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Core.Enums.22.23.5.64\lib\net452\PayRunIO.Core.Enums.dll</HintPath>
+    <Reference Include="PayRunIO.Core.Enums, Version=23.24.9.94, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Core.Enums.23.24.9.94\lib\net452\PayRunIO.Core.Enums.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.CSharp.SDK, Version=22.23.5.64, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.CSharp.SDK.22.23.5.64\lib\net452\PayRunIO.CSharp.SDK.dll</HintPath>
+    <Reference Include="PayRunIO.CSharp.SDK, Version=23.24.9.94, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.CSharp.SDK.23.24.9.94\lib\net452\PayRunIO.CSharp.SDK.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Models, Version=22.23.5.64, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Models.22.23.5.64\lib\net452\PayRunIO.Models.dll</HintPath>
+    <Reference Include="PayRunIO.Models, Version=23.24.9.94, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Models.23.24.9.94\lib\net452\PayRunIO.Models.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.OAuth1, Version=22.23.5.64, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.OAuth1.22.23.5.64\lib\net452\PayRunIO.OAuth1.dll</HintPath>
+    <Reference Include="PayRunIO.OAuth1, Version=23.24.9.94, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.OAuth1.23.24.9.94\lib\net452\PayRunIO.OAuth1.dll</HintPath>
     </Reference>
-    <Reference Include="PayRunIO.Utilities, Version=22.23.5.64, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PayRunIO.Utilities.22.23.5.64\lib\net452\PayRunIO.Utilities.dll</HintPath>
+    <Reference Include="PayRunIO.Utilities, Version=23.24.9.94, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayRunIO.Utilities.23.24.9.94\lib\net452\PayRunIO.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

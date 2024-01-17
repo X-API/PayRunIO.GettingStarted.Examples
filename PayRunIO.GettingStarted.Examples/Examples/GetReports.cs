@@ -1,13 +1,8 @@
 ﻿namespace PayRunIO.GettingStarted.Examples.Examples
 {
     using System;
-    using System.Collections.ObjectModel;
     using System.IO;
-    using System.Linq;
     using System.Text;
-    using System.Threading;
-
-    using PayRunIO.Core.Enums;
     using PayRunIO.CSharp.SDK;
     using PayRunIO.GettingStarted.Examples.Examples.Base;
     using PayRunIO.GettingStarted.Examples.Properties;
@@ -47,7 +42,7 @@
                 var reportKey = reportLink.ExtractKey("Report");
                 var reportXml = this.ApiHelper.GetRawXml(reportLink.Href);
 
-                File.WriteAllText(Path.Combine(OutputFolder, reportKey + ".xml"), reportXml.Beautify().Replace(" encoding=\"utf-16\"", string.Empty), Encoding.UTF8);
+                System.IO.File.WriteAllText(Path.Combine(OutputFolder, reportKey + ".xml"), reportXml.Beautify().Replace(" encoding=\"utf-16\"", string.Empty), Encoding.UTF8);
             }
 
             // End of examples
