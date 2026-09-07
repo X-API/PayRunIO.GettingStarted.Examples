@@ -17,6 +17,8 @@
                 Settings.Default.ApiEndpoint,
                 Settings.Default.ContentTypeHeader,
                 Settings.Default.AcceptHeader);
+
+            this.ApiHelper.ApiVersionHeader = "v2";
         }
 
         public RestApiHelper ApiHelper { get; private set; }
@@ -27,7 +29,7 @@
 
         public abstract int Order { get; }
 
-        public abstract short TaxYear { get; }
+        public abstract short TaxYear { get; } 
 
         public abstract void Execute();
     }

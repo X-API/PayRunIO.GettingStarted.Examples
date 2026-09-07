@@ -103,6 +103,7 @@
             Console.WriteLine(string.Empty);
 
             Console.WriteLine("Examples Menu");
+            Console.WriteLine("[a] Run All");
             foreach (var example in examples.OrderBy(e => e.Key))
             {
                 Console.WriteLine($"[{example.Key}] {example.Value.Title}");

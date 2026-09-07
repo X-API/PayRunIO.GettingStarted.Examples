@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ApiEndpoint" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://api.test.payrun.io</Value>
+      <Value Profile="(Default)">dsafsdf</Value>
     </Setting>
     <Setting Name="DeveloperPortalBaseUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://developer.test.payrun.io</Value>
@@ -15,10 +15,10 @@
       <Value Profile="(Default)">application/xml</Value>
     </Setting>
     <Setting Name="ConsumerKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">#{ConsumerKey}</Value>
+      <Value Profile="(Default)">fYBgNnuT6Ee13kl5NXm6Cw</Value>
     </Setting>
     <Setting Name="ConsumerSecret" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">#{ConsumerSecret}</Value>
+      <Value Profile="(Default)">N2XDpDCjRU2BJt7hGZKdswI0F2eIhL0ZHMqGPoi2A</Value>
     </Setting>
   </Settings>
 </SettingsFile>

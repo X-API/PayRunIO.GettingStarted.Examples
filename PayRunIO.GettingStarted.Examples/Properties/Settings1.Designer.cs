@@ -12,7 +12,7 @@ namespace PayRunIO.GettingStarted.Examples.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace PayRunIO.GettingStarted.Examples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://api.test.payrun.io")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dsafsdf")]
         public string ApiEndpoint {
             get {
                 return ((string)(this["ApiEndpoint"]));
@@ -61,7 +61,7 @@ namespace PayRunIO.GettingStarted.Examples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#{ConsumerKey}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fYBgNnuT6Ee13kl5NXm6Cw")]
         public string ConsumerKey {
             get {
                 return ((string)(this["ConsumerKey"]));
@@ -70,7 +70,7 @@ namespace PayRunIO.GettingStarted.Examples.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#{ConsumerSecret}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("N2XDpDCjRU2BJt7hGZKdswI0F2eIhL0ZHMqGPoi2A")]
         public string ConsumerSecret {
             get {
                 return ((string)(this["ConsumerSecret"]));

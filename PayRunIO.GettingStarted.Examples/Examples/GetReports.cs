@@ -22,7 +22,7 @@
 
         public override int Order => 7;
 
-        public override short TaxYear => 2023;
+        public override short TaxYear => 2024;
 
         public const string OutputFolder = @"C:\Development\Payescape.PayRunIO.ReportTransforms\Payescape.PayRunIO.ReportTransforms\Payescape.PayRunIO.ReportTransforms\ReportDefinitions\Custom";
 
@@ -47,7 +47,7 @@
                 var reportKey = reportLink.ExtractKey("Report");
                 var reportXml = this.ApiHelper.GetRawXml(reportLink.Href);
 
-                File.WriteAllText(Path.Combine(OutputFolder, reportKey + ".xml"), reportXml.Beautify().Replace(" encoding=\"utf-16\"", string.Empty), Encoding.UTF8);
+                System.IO.File.WriteAllText(Path.Combine(OutputFolder, reportKey + ".xml"), reportXml.Beautify().Replace(" encoding=\"utf-16\"", string.Empty), Encoding.UTF8);
             }
 
             // End of examples

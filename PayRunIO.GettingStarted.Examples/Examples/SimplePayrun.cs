@@ -26,12 +26,13 @@ namespace PayRunIO.GettingStarted.Examples.Examples
 
         public override int Order => 1;
 
-        public override short TaxYear => 2023;
+        public override short TaxYear => 2024;
 
         public override void Execute()
         {
             Console.WriteLine("Executing Example: " + this.Title);
             Console.WriteLine("See: " + Settings.Default.DeveloperPortalBaseUrl + this.DocsUrl);
+            Console.WriteLine("ApiHost: " + Settings.Default.ApiEndpoint);
             Console.WriteLine("===================================");
 
             // Step 1: Create an Employer
@@ -160,7 +161,8 @@ namespace PayRunIO.GettingStarted.Examples.Examples
                 PaymentDate = new DateTime(this.TaxYear, 4, 30),
                 StartDate = new DateTime(this.TaxYear, 4, 1),
                 EndDate = new DateTime(this.TaxYear, 4, 30),
-                PaySchedule = payScheduleLink
+                PaySchedule = payScheduleLink, 
+                SkipJournalGeneration = true
             };
 
             var jobInfoLink = this.ApiHelper.Post("/Jobs/Payruns", payRunJob);

@@ -29,7 +29,7 @@ namespace PayRunIO.GettingStarted.Examples.Examples
 
         public override int Order => 2;
 
-        public override short TaxYear => 2022;
+        public override short TaxYear => 2024;
 
         public override void Execute()
         {
