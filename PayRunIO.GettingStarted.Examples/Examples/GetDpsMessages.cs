@@ -14,11 +14,11 @@ namespace PayRunIO.GettingStarted.Examples.Examples
     using System.Linq;
     using System.Threading;
 
-    using PayRunIO.Core.Enums;
+    using PayRunIO.v2.Core.Enums;
     using PayRunIO.GettingStarted.Examples.Examples.Base;
     using PayRunIO.GettingStarted.Examples.Properties;
-    using PayRunIO.Models;
-    using PayRunIO.Utilities;
+    using PayRunIO.v2.Models;
+    using PayRunIO.v2.Utilities;
 
     public class GetDpsMessages : ExampleBase
     {

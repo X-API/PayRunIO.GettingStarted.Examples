@@ -4,10 +4,10 @@
     using System.Linq;
     using System.Threading;
 
-    using PayRunIO.Core.Enums;
+    using PayRunIO.v2.Core.Enums;
     using PayRunIO.GettingStarted.Examples.Examples.Base;
     using PayRunIO.GettingStarted.Examples.Properties;
-    using PayRunIO.Models;
+    using PayRunIO.v2.Models;
 
     public class CorrectingTaxCodeExample : ExampleBase
     {
